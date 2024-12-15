@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Saavedra's Services</title>
+    <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+    <script src="https://kit.fontawesome.com/b15f06df26.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+</head>
+
+<body>
+  
+    <nav class="navbar">
+        <div class="logo-container">
+            <img src="./images/logo.jpg" alt="Company Logo" class="logo">
+            <span class="company-name">SAAVEDRA</span>
+        </div>
+        <input type="checkbox" id="nav-check">
+        <label for="nav-check" class="checkbtn">
+            <i class="fas fa-bars"></i>
+        </label>
+        <ul class="nav-links">
+            <li><a href="#">HOME</a></li>
+            <li><a href="#about">ABOUT</a></li>
+            <li><a href="#services">SERVICES</a></li>
+            <li><a href="#contact">CONTACT US</a></li>
+            <!-- Social Media Links -->
+            <li class="social-links">
+                <a href="https://www.facebook.com" target="_blank" aria-label="Facebook">
+                    <i class="fab fa-facebook"></i>
+                </a>
+                <a href="https://www.instagram.com" target="_blank" aria-label="Instagram">
+                    <i class="fab fa-instagram"></i>
+                </a>
+            </li>
+            
+        </ul>
+    </nav>
+    
+    
+    <section class="hero-section">
+        <div class="hero-content">
+            <div class="hero-image">
+                <img src="./images/image1.jpg" alt="Master carpenter at work">
+            </div>
+            <div class="hero-text">
+                <h1>Crafting Excellence, One Piece at a Time</h1>
+                <p>With years of expertise in carpentry and construction, we transform your visions into reality. From custom furniture to complete renovations, we deliver unparalleled craftsmanship and dedication to every project.</p>
+               
+            </div>
+        </div>
+    </section>
+    
+
+
+
+
+
+
+    
+      
+
+ 
+
+
+
+    <div class="inspiration">
+    
+        <!-- First Row: Text Left, Image Right -->
+        <div class="content-row">
+            <div class="text">
+                <h2>SINCE 1985 WE TAKE CARE EVERY STEP OF THE WAY</h2>
+                <p>Your home is as unique as you are. That’s why the skilled design 
+                    and building teams at D&D Carpentry work closely 
+                    with you to create the home that is right for you today – and in the future.
+                    From our first meeting to the day you move in, we listen to you – 
+                    to understand your goals – to ensure the highest quality and a home you
+                    will be proud of for years to come.</p>
+            </div>
+            <div class="image">
+                <img src="/images/image2.jpg" alt="Image 2">
+            </div>
+        </div>
+    
+        <!-- Second Row: Text Right, Image Left -->
+        <div class="content-row row-reverse">
+            <div class="image">
+                <img src="/images/image3.jpg" alt="Image 3">
+            </div>
+            <div class="text">
+                <h2>WE HELP YOU BUILD YOUR DREAM HOUSE</h2>
+                <p>Your home is as unique as you are. That’s why the skilled design 
+                    and building teams at D&D Carpentry work closely 
+                    with you to create the home that is right for you today – and in the future.
+                    From our first meeting to the day you move in, we listen to you – 
+                    to understand your goals – to ensure the highest quality and a home you
+                    will be proud of for years to come.</p>
+            </div>
+        </div>
+    </div>
+    
+    
+
+
+
+
+    <!-- <section class="front-image">
+        <img src="./images/image1.webp" alt="Home design">
+        <div class="text-content">
+            <h1>WE TAKE CARE EVERY STEP OF THE WAY</h1>
+            <p>
+                Your home is as unique as you are. That’s why the
+                skilled design and building teams at D&D Carpentry
+                work closely with you to create the home that is right
+                for you today – and in the future. From our first
+                meeting to the day you move in, we listen to you – 
+                to understand your goals – to ensure the highest
+                quality and a home you will be proud of for years
+                to come.
+            </p>
+        </div>
+    </section> -->
+
+    
+   
+
+    <div class="our-services" id="services">
+        <h1>Our Services</h1>
+        <div class="services-container"> <!-- New container added -->
+            <div class="services-grid">
+                <div class="service-item" style="--animation-index: 1;">
+                    <div class="icon"><img src="./images/icon1.png" alt="Icon 1"></div>
+                    <div class="text">
+                        <h2>New Home Construction</h2>
+                        <p>D&D builds custom homes that bring years of enjoyment. And, because each custom home starts with listening and ends with quality, we help make the planning and construction journey enjoyable, as well..</p>
+                    </div>
+                </div>
+                <div class="service-item" style="--animation-index: 2;">
+                    <div class="icon"><img src="./images/icon2.png" alt="Icon 2"></div>
+                    <div class="text">
+                        <h2>Remodeling</h2>
+                        <p>D&D builds custom homes that bring years of enjoyment. And, because each custom home starts with listening and ends with quality, we help make the planning and construction journey enjoyable, as well.</p>
+                    </div>
+                </div>
+                <div class="service-item" style="--animation-index: 3;">
+                    <div class="icon"><img src="./images/icon3.png" alt="Icon 3"></div>
+                    <div class="text">
+                        <h2>Restoration</h2>
+                        <p>D&D builds custom homes that bring years of enjoyment. And, because each custom home starts with listening and ends with quality, we help make the planning and construction journey enjoyable, as well.</p>
+                    </div>
+                </div>
+                <div class="service-item" style="--animation-index: 4;">
+                    <div class="icon"><img src="./images/icon4.png" alt="Icon 4"></div>
+                    <div class="text">
+                        <h2>Painting</h2>
+                        <p>D&D builds custom homes that bring years of enjoyment. And, because each custom home starts with listening and ends with quality, we help make the planning and construction journey enjoyable, as well.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    
+
+    
+    
+
+
+
+
+
+
+
+
+  
+
+
+
+
+    <section class="our-products">
+        <h1>What Types of Products Do We Use?</h1>
+        <p>We use high-quality products for our services.</p>
+        <div class="products-bar">
+            <div class="product-item">
+                <img src="./images/product1.png" alt="Product 1">
+            </div>
+            <div class="product-item">
+                <img src="./images/product2.png" alt="Product 2">
+            </div>
+            <div class="product-item">
+                <img src="./images/product3.png" alt="Product 3">
+            </div>
+            <div class="product-item">
+                <img src="./images/product4.png" alt="Product 4">
+            </div>
+            <div class="product-item">
+                <img src="./images/product5.png" alt="Product 4">
+            </div>
+            <div class="product-item">
+                <img src="./images/product6.png" alt="Product 4">
+            </div>
+        </div>
+    </section>
+
+    
+
+    <section class="countries-worked">
+        <h1>Countries We’ve Worked In</h1>
+        <h2>We are an international company</h2>
+        <p>Our expertise has reached across borders, delivering exceptional service worldwide.</p>
+        <div id="map" style="width: 100%; height: 400px;"></div>
+    </section>
+    
+
+    
+    
+
+    <section class="contact-us" id="contact">
+        <div class="contact-container">
+            <h1>Contact Us</h1>
+            <p>We're here to help! Reach out for a free consultation today.</p>
+            <div class="contact-info">
+                <div class="contact-detail">
+                    <h3>Free Consultation</h3>
+                    <p>We offer a free consultation to understand your needs and help you get started with our services.</p>
+                </div>
+                <div class="contact-detail">
+                    <h3>We speak English and Spanish</h3>
+                    <p>Our team is fluent in both English and Spanish, so feel free to contact us in whichever language you prefer!</p>
+                </div>
+                <div class="contact-detail">
+                    <h3>Get In Touch</h3>
+                    <ul>
+                        <li><strong>Email:</strong> contact@yourcompany.com</li>
+                        <li><strong>Phone:</strong> +123 456 7890</li>
+                        <li><strong>Office Hours:</strong> Mon - Fri, 9 AM - 6 PM</li>
+                    </ul>
+                </div>
+            </div>
+    
+            <!-- Social Media Links -->
+            <div class="social-media">
+                <h3>Follow Us</h3>
+                <ul>
+                    <li><a href="https://www.facebook.com/yourcompany" target="_blank" class="social-icon facebook"><i class="fab fa-facebook-f"></i></a></li>
+                    <li><a href="https://twitter.com/yourcompany" target="_blank" class="social-icon twitter"><i class="fab fa-twitter"></i></a></li>
+                    <li><a href="https://www.instagram.com/yourcompany" target="_blank" class="social-icon instagram"><i class="fab fa-instagram"></i></a></li>
+                    <li><a href="https://www.linkedin.com/company/yourcompany" target="_blank" class="social-icon linkedin"><i class="fab fa-linkedin-in"></i></a></li>
+                </ul>
+            </div>
+        </div>
+    
+        <div class="footer">
+            <p>&copy; 2024 Your Company Name. All rights reserved.</p>
+        </div>
+    </section>
+    
+    
+    
+    
+    
+
+    <script src="script.js"></script>
+
+    
+</body>
+</html>

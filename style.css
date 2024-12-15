@@ -1,0 +1,976 @@
+* {
+    font-family: 'Raleway', sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: "Montserrat", sans-serif;
+    font-size: 16px; /* Use rem units for better scaling */
+    line-height: 1.6; /* Improves readability */
+    overflow-x: hidden; /* Prevent horizontal scroll caused by overflow */
+}
+
+.site-wrapper {
+    width: 100%;
+}
+
+
+
+/* Navbar Styling */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 40px;
+    background-color: white;
+    color: #fff;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Logo and Company Name */
+.logo-container {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    margin-left: 15%;
+}
+
+.logo {
+    width: 80px;
+    height: auto;
+}
+
+.company-name {
+    font-size: 2rem;
+    letter-spacing: 1px;
+    color: black;
+    white-space: nowrap;
+}
+
+/* Navigation Links */
+.nav-links {
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    gap: 30px;
+    margin-right: 10%;
+}
+
+.nav-links li {
+    margin: 0;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: black;
+    font-size: 1rem;
+    transition: color 0.3s;
+}
+
+/* Hover and Active State */
+.nav-links a:hover,
+.nav-links a:active {
+    color: #FF6347;
+}
+
+/* Social Media Icons */
+/* Social Media Links */
+.social-links {
+    display: flex;
+    gap: 15px; /* Space between the social media icons */
+    align-items: center;
+}
+
+.social-links a {
+    color: black;
+    font-size: 1.2rem;
+    transition: color 0.3s ease;
+}
+
+.social-links a:hover {
+    color: #FF6347; /* Orange hover effect for social media icons */
+}
+
+
+/* Hamburger Menu for Mobile */
+.checkbtn {
+    display: none;
+    font-size: 1.8rem;
+    color: black;
+    cursor: pointer;
+}
+
+#nav-check {
+    display: none;
+}
+
+#nav-check:checked ~ .nav-links {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 100%;
+    right: 0;
+    background-color: #fffefe;
+    width: 100%;
+    text-align: center;
+    box-shadow: 0 4px 6px rgba(238, 228, 228, 0.2);
+    padding: 20px 0;
+    gap: 20px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .nav-links {
+        display: none;
+    }
+
+    .checkbtn {
+        display: block;
+    }
+}
+
+@media (max-width: 480px) {
+    .logo {
+        width: 60px;
+    }
+
+    .company-name {
+        font-size: 1.5rem;
+    }
+
+    .nav-links a {
+        font-size: 0.9rem;
+    }
+
+    .social-media a {
+        font-size: 1rem;
+    }
+}
+
+
+
+
+
+
+
+
+
+
+/* Hero Section Styling */
+.hero-section {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 40px 10%;
+    background-color: #f7f7f7; /* Light background to make it visually appealing */
+    height: 100vh;
+}
+
+/* Hero Content Wrapper */
+.hero-content {
+    display: flex;
+    align-items: center;
+    gap: 40px; /* Space between image and text */
+    flex-wrap: wrap; /* Ensure responsiveness */
+}
+
+/* Hero Image */
+.hero-image {
+    flex: 1; /* Take 50% of the space */
+    max-width: 50%; /* Limit image size */
+}
+
+.hero-image img {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+/* Hero Text */
+.hero-text {
+    flex: 1; /* Take 50% of the space */
+    max-width: 50%; /* Limit text width */
+}
+
+.hero-text h1 {
+    font-size: 2.8rem;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 20px;
+    line-height: 1.3;
+    letter-spacing: 1px;
+}
+
+.hero-text p {
+    font-size: 1.2rem;
+    color: #555;
+    margin-bottom: 30px;
+    line-height: 1.6;
+}
+
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .hero-section {
+        flex-direction: column;
+        text-align: center;
+        height: auto;
+        padding: 20px;
+    }
+
+    .hero-content {
+        flex-direction: column-reverse; /* Put the image below the text on smaller screens */
+        gap: 20px;
+    }
+
+    .hero-text, .hero-image {
+        max-width: 100%;
+    }
+
+    .hero-text h1 {
+        font-size: 2rem;
+    }
+
+    .hero-text p {
+        font-size: 1rem;
+    }
+
+    .cta-button {
+        font-size: 0.9rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero-text h1 {
+        font-size: 1.8rem;
+    }
+
+    .hero-text p {
+        font-size: 0.9rem;
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.inspiration {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 40px 20px;
+}
+
+.inspiration h1 {
+    font-size: 3rem; /* Large size for a prominent title */
+    font-weight: 700; /* Bold weight for emphasis */
+    color: #2c3e50; /* Dark color for readability */
+    text-align: center; /* Centered title */
+    margin-bottom: 20px; /* Space below the title */
+    letter-spacing: 1.5px; /* Slight spacing between letters for style */
+    text-transform: uppercase; /* Transform title to uppercase for a bold look */
+    position: relative;
+}
+
+.content-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    margin-top: 40px;
+}
+
+.text {
+    flex: 1;
+    text-align: left;
+}
+
+.text h2 {
+    font-size: 1.8rem;
+    color: #555;
+    margin-bottom: 10px;
+}
+
+.text p {
+    font-size: 1rem;
+    line-height: 1.6;
+    color: #666;
+}
+
+.image {
+    flex: 1;
+    text-align: center;
+    opacity: 0; /* Initial state for animation */
+}
+
+.image img {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    transform: scale(1); /* Ensure no unintended scaling */
+    transition: transform 0.5s ease-in-out; /* Smooth hover effect */
+}
+
+/* Animation Classes */
+/* Animation Classes (apply only when triggered) */
+.image-slide-right {
+    animation: slide-in-right 2s ease-in-out forwards; /* Faster slide-in animation from right */
+}
+
+.image-slide-left {
+    animation: slide-in-left 2s ease-in-out forwards; /* Faster slide-in animation from left */
+}
+
+
+@keyframes slide-in-right {
+    0% {
+        opacity: 0;
+        transform: translateX(200px); /* Start off-screen farther to the right */
+    }
+    100% {
+        opacity: 1;
+        transform: translateX(0); /* End in original position */
+    }
+}
+
+@keyframes slide-in-left {
+    0% {
+        opacity: 0;
+        transform: translateX(-200px); /* Start off-screen farther to the left */
+    }
+    100% {
+        opacity: 1;
+        transform: translateX(0); /* End in original position */
+    }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .content-row {
+        flex-direction: column; /* Stack elements vertically on mobile */
+    }
+
+    .content-row.row-reverse {
+        flex-direction: column; /* Same stacking for reversed rows */
+    }
+
+    .text, .image {
+        text-align: center; /* Center-align content on mobile */
+    }
+
+    .image img {
+        width: 90%; /* Reduce image size on smaller screens */
+        margin: 0 auto;
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* General Section Styling */
+.our-services {
+    text-align: center;
+    padding: 50px 20px;
+    background-color: #f7f7f7;
+    font-family: 'Raleway', sans-serif;
+}
+
+.our-services h1 {
+    font-size: 2.5rem;
+    margin-bottom: 40px;
+    color: #333;
+}
+
+/* Add a container to limit the width */
+.services-container {
+    max-width: 1200px; /* Limits the maximum width */
+    margin: 0 auto; /* Centers the container */
+    padding: 0 20px; /* Adds padding on the sides */
+}
+
+/* Flexbox Grid Layout */
+.services-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 40px;
+    justify-content: center;
+    overflow: hidden; /* Ensures animation behaves well */
+}
+
+/* Animation Keyframes */
+@keyframes fadeInUp {
+    0% {
+        opacity: 0;
+        transform: translateY(30px); /* Starts slightly below the original position */
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0); /* Ends at the original position */
+    }
+}
+
+/* Scroll Animation */
+.service-item {
+    display: flex;
+    flex: 1 1 calc(50% - 40px); /* Two items per row on larger screens */
+    align-items: flex-start;
+    gap: 20px;
+    padding: 20px;
+    border: 1px solid #ddd; /* Optional: Add a subtle border for styling */
+    border-radius: 8px; /* Rounded corners */
+    background-color: #fff; /* White background for better contrast */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow for a modern look */
+    opacity: 0; /* Initially hidden */
+    transform: translateY(30px); /* Initially shifted down */
+    animation: fadeInUp 1s ease-out forwards; /* Slower animation */
+    animation-play-state: paused; /* Initially paused */
+}
+
+/* Add class when in viewport */
+.service-item.visible {
+    animation-play-state: running; /* Start animation when visible */
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+    .service-item {
+        flex: 1 1 calc(100% - 40px); /* One item per row for tablets */
+    }
+
+    /* Resize icons for smaller tablets */
+    .service-item .icon img {
+        width: 60px; /* Adjusted icon size for tablets */
+    }
+}
+
+@media (max-width: 768px) {
+    .our-services h1 {
+        font-size: 2rem; /* Smaller title size for smaller screens */
+    }
+
+    .services-grid {
+        gap: 20px; /* Reduce gap for smaller screens */
+    }
+
+    .service-item {
+        flex: 1 1 calc(100% - 20px); /* Full width for small devices */
+        padding: 15px;
+    }
+
+    /* Smaller icons for all devices */
+    .service-item .icon img {
+        width: 50px; /* Set the icon size */
+        height: auto; /* Maintain aspect ratio */
+    }
+}
+
+@media (max-width: 480px) {
+    /* Even smaller icons for very small screens */
+    .service-item .icon img {
+        width: 40px; /* Smaller size for very small screens */
+    }
+}
+
+/* For larger screens (Desktop) */
+@media (min-width: 1200px) {
+    .service-item .icon img {
+        width: 60px; /* Adjust to a smaller size for desktop */
+    }
+}
+
+/* For Laptop/Medium Screens (1024px to 1200px) */
+@media (min-width: 1024px) and (max-width: 1200px) {
+    .service-item .icon img {
+        width: 50px; /* Set smaller icons for laptops */
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* General Section Styling */
+.our-products {
+    text-align: center;
+    padding: 50px 20px;
+    background-color: #f7f7f7;
+    font-family: 'Raleway', sans-serif;
+}
+
+.our-products h1 {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+    color: #333; /* Keep h1 text color as before */
+}
+
+.our-products p {
+    font-size: 1.2rem;
+    margin-bottom: 40px;
+    color: #666; /* Keep paragraph text color as before */
+}
+
+/* Products Bar */
+.products-bar {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    background-color: #e0e0e0;
+    padding: 20px;
+    border-radius: 8px;
+}
+
+.product-item {
+    flex: 1 1 calc(20% - 20px); /* Adjust to fit 5 items per row */
+    max-width: 150px; /* Limit image size */
+    text-align: center;
+    padding: 10px; /* Add padding to avoid any tight fit */
+}
+
+/* Apply grayscale filter to images */
+.product-item img {
+    width: 100%; /* Ensures the image takes up 100% of the container width */
+    height: auto; /* Maintain the image's natural aspect ratio */
+    object-fit: contain; /* Ensure the image scales correctly without stretching */
+    border-radius: 4px;
+    transition: transform 0.3s ease, filter 0.3s ease; /* Transition for hover effect */
+    filter: grayscale(100%); /* Make images grey */
+}
+
+/* Zoom effect on hover, keep the images grey */
+.product-item img:hover {
+    transform: scale(1.1); /* Zoom effect */
+    filter: grayscale(100%); /* Keep images grey on hover */
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .product-item {
+        flex: 1 1 calc(50% - 20px); /* 2 items per row on smaller screens */
+    }
+}
+
+@media (max-width: 480px) {
+    .product-item {
+        flex: 1 1 100%; /* Full-width items on very small screens */
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* Section Styling */
+.countries-worked {
+    text-align: center;
+    padding: 60px 20px;
+    background-color: #f7f7f7;
+    font-family: 'Raleway', sans-serif;
+}
+
+.countries-worked h1 {
+    font-size: 2.5rem;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+.countries-worked p {
+    font-size: 1.2rem;
+    color: #777;
+    margin-bottom: 40px;
+}
+
+/* Map Container */
+.map-container {
+    position: relative;
+    width: 100%;
+    height: 400px;
+    background-image: url('./images/image4.jpg'); /* Replace with your map image */
+    background-size: cover;
+    background-position: center;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+}
+
+/* Country Markers (Points) */
+.country-marker {
+    position: absolute;
+    width: 15px;
+    height: 15px;
+    background-color: #FF6347; /* Tomato color for visibility */
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    border: 2px solid #fff; /* Optional border to make the marker stand out */
+    cursor: pointer;
+    display: inline-block;
+    text-align: center;
+    padding: 5px;
+}
+
+/* Country Name (Initially Hidden) */
+.country-name {
+    position: absolute;
+    bottom: -25px; /* Adjust this value to control the distance between the dot and the country name */
+    left: 50%;
+    transform: translateX(-50%);
+    color: #fff;
+    font-size: 1rem;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+/* Show Country Name on Hover */
+.country-marker:hover .country-name {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* Hover Effect for Markers */
+.country-marker:hover {
+    background-color: #FF4500; /* Change color on hover */
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .map-container {
+        height: 300px;
+    }
+    .country-marker {
+        width: 12px;
+        height: 12px;
+    }
+    .country-name {
+        font-size: 0.9rem;
+    }
+}
+
+
+
+
+
+
+
+
+
+/* General Section Styling */
+.contact-us {
+    background-color: #f7f7f7;
+    padding: 60px 20px;
+    font-family: 'Raleway', sans-serif;
+    text-align: center;
+}
+
+.contact-us h1 {
+    font-size: 2.5rem;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+.contact-us p {
+    font-size: 1.2rem;
+    color: #777;
+    margin-bottom: 40px;
+}
+
+/* Contact Info */
+.contact-info {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    margin-top: 20px;
+}
+
+.contact-detail {
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    padding: 30px;
+    width: 30%;
+    max-width: 350px;
+    text-align: left;
+    transition: transform 0.3s ease;
+}
+
+.contact-detail h3 {
+    font-size: 1.8rem;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.contact-detail p, .contact-detail ul {
+    font-size: 1rem;
+    color: #666;
+}
+
+.contact-detail ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.contact-detail li {
+    margin: 10px 0;
+}
+
+.contact-detail:hover {
+    transform: translateY(-5px);
+}
+
+/* Footer */
+.footer {
+    margin-top: 40px;
+    font-size: 1rem;
+    color: #777;
+}
+
+.footer p {
+    margin-top: 20px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .contact-detail {
+        width: 45%; /* 2 items per row */
+    }
+}
+
+@media (max-width: 480px) {
+    .contact-detail {
+        width: 100%; /* Full width items on small screens */
+        padding: 20px;
+    }
+
+    .contact-us h1 {
+        font-size: 2rem;
+    }
+
+    .contact-us p {
+        font-size: 1rem;
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* Social Media Section */
+.social-media {
+    margin-top: 40px;
+    text-align: center;
+}
+
+.social-media h3 {
+    font-size: 1.5rem;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+.social-media ul {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+.social-media li {
+    display: inline-block;
+}
+
+.social-icon {
+    font-size: 1.5rem;
+    color: #333;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.social-icon:hover {
+    color: #FF6347; /* Hover color */
+}
+
+.social-icon.facebook:hover {
+    color: #3b5998; /* Facebook color */
+}
+
+.social-icon.twitter:hover {
+    color: #1DA1F2; /* Twitter color */
+}
+
+.social-icon.instagram:hover {
+    color: #E4405F; /* Instagram color */
+}
+
+.social-icon.linkedin:hover {
+    color: #0077b5; /* LinkedIn color */
+}
+
+/* Responsive Design for Social Media */
+@media (max-width: 768px) {
+    .social-media ul {
+        gap: 15px;
+    }
+
+    .social-media h3 {
+        font-size: 1.3rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .social-media ul {
+        gap: 10px;
+    }
+
+    .social-media h3 {
+        font-size: 1.2rem;
+    }
+
+    .social-icon {
+        font-size: 1.2rem;
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
