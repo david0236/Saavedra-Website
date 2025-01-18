@@ -1,3 +1,4 @@
+/* General Reset */
 * {
     font-family: 'Raleway', sans-serif;
     margin: 0;
@@ -6,40 +7,33 @@
 }
 
 body {
+    font-size: 16px;
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+@import url('https://fonts.googleapis.com/css?family=Raleway|Open+Sans');
+
+html, body {
     margin: 0;
-    padding: 0;
-    font-family: "Montserrat", sans-serif;
-    font-size: 16px; /* Use rem units for better scaling */
-    line-height: 1.6; /* Improves readability */
-    overflow-x: hidden; /* Prevent horizontal scroll caused by overflow */
+    height: 100%;
+    font-family: 'Open Sans', sans-serif;
 }
 
-.site-wrapper {
-    width: 100%;
-}
-
-
-
-/* Navbar Styling */
-.navbar {
+/* Top Navigation Bar */
+.top-nav {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 15px 40px;
-    background-color: white;
-    color: #fff;
-    position: sticky;
-    top: 0;
-    z-index: 1000;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    background-color: white; /* Dark background for contrast */
+    color: #FFF;
+    padding: 1em;
 }
 
-/* Logo and Company Name */
 .logo-container {
     display: flex;
     align-items: center;
-    gap: 20px;
-    margin-left: 15%;
+    gap: 15px;
 }
 
 .logo {
@@ -48,117 +42,72 @@ body {
 }
 
 .company-name {
-    font-size: 2rem;
-    letter-spacing: 1px;
+    font-size: 1.6rem;
+    font-weight: bold;
     color: black;
-    white-space: nowrap;
 }
 
-/* Navigation Links */
-.nav-links {
+/* Navigation Menu */
+.menu {
     display: flex;
+    flex-direction: row;
     list-style: none;
     margin: 0;
     padding: 0;
-    gap: 30px;
-    margin-right: 10%;
 }
 
-.nav-links li {
-    margin: 0;
+.menu > li {
+    margin: 0 1.5rem;
 }
 
-.nav-links a {
+.menu > li > a {
     text-decoration: none;
     color: black;
-    font-size: 1rem;
+    font-size: 1.1rem;
+    font-weight: 500;
     transition: color 0.3s;
 }
 
-/* Hover and Active State */
-.nav-links a:hover,
-.nav-links a:active {
-    color: #FF6347;
+.menu > li > a:hover {
+    color: #FF6347; /* Highlight color */
 }
 
 /* Social Media Icons */
-/* Social Media Links */
 .social-links {
     display: flex;
-    gap: 15px; /* Space between the social media icons */
-    align-items: center;
+    gap: 10px;
 }
 
 .social-links a {
-    color: black;
-    font-size: 1.2rem;
-    transition: color 0.3s ease;
+    color: #fff;
+    font-size: 1.5rem;
+    transition: color 0.3s;
 }
 
 .social-links a:hover {
-    color: #FF6347; /* Orange hover effect for social media icons */
+    color: #FF6347;
 }
 
-
-/* Hamburger Menu for Mobile */
-.checkbtn {
-    display: none;
-    font-size: 1.8rem;
-    color: black;
-    cursor: pointer;
+/* Media Queries */
+@media (max-width: 1024px) {
+    .menu {
+        display: none; /* Hide menu for smaller screens */
+    }
 }
 
-#nav-check {
-    display: none;
-}
-
-#nav-check:checked ~ .nav-links {
-    display: flex;
-    flex-direction: column;
-    position: absolute;
-    top: 100%;
-    right: 0;
-    background-color: #fffefe;
-    width: 100%;
-    text-align: center;
-    box-shadow: 0 4px 6px rgba(238, 228, 228, 0.2);
-    padding: 20px 0;
-    gap: 20px;
-}
-
-/* Responsive Design */
 @media (max-width: 768px) {
-    .nav-links {
-        display: none;
-    }
-
-    .checkbtn {
-        display: block;
-    }
-}
-
-@media (max-width: 480px) {
     .logo {
         width: 60px;
     }
 
     .company-name {
-        font-size: 1.5rem;
+        font-size: 1.3rem;
     }
 
-    .nav-links a {
-        font-size: 0.9rem;
-    }
-
-    .social-media a {
+    .menu > li > a {
         font-size: 1rem;
     }
 }
-
-
-
-
-
 
 
 
@@ -286,22 +235,6 @@ body {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 .inspiration {
     max-width: 1200px;
     margin: 0 auto;
@@ -309,16 +242,18 @@ body {
 }
 
 .inspiration h1 {
-    font-size: 3rem; /* Large size for a prominent title */
-    font-weight: 700; /* Bold weight for emphasis */
-    color: #2c3e50; /* Dark color for readability */
-    text-align: center; /* Centered title */
-    margin-bottom: 20px; /* Space below the title */
-    letter-spacing: 1.5px; /* Slight spacing between letters for style */
-    text-transform: uppercase; /* Transform title to uppercase for a bold look */
+    font-size: 2.5rem; /* Adjusted for responsiveness */
+    font-weight: 700;
+    color: #2c3e50;
+    text-align: center;
+    margin-bottom: 20px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
     position: relative;
+    line-height: 1.2;
 }
 
+/* Content Row */
 .content-row {
     display: flex;
     align-items: center;
@@ -355,62 +290,85 @@ body {
     height: auto;
     border-radius: 10px;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-    transform: scale(1); /* Ensure no unintended scaling */
-    transition: transform 0.5s ease-in-out; /* Smooth hover effect */
+    transform: scale(1);
+    transition: transform 0.5s ease-in-out;
 }
 
 /* Animation Classes */
-/* Animation Classes (apply only when triggered) */
 .image-slide-right {
-    animation: slide-in-right 2s ease-in-out forwards; /* Faster slide-in animation from right */
+    animation: slide-in-right 1.5s ease-in-out forwards;
 }
 
 .image-slide-left {
-    animation: slide-in-left 2s ease-in-out forwards; /* Faster slide-in animation from left */
+    animation: slide-in-left 1.5s ease-in-out forwards;
 }
-
 
 @keyframes slide-in-right {
     0% {
         opacity: 0;
-        transform: translateX(200px); /* Start off-screen farther to the right */
+        transform: translateX(200px);
     }
     100% {
         opacity: 1;
-        transform: translateX(0); /* End in original position */
+        transform: translateX(0);
     }
 }
 
 @keyframes slide-in-left {
     0% {
         opacity: 0;
-        transform: translateX(-200px); /* Start off-screen farther to the left */
+        transform: translateX(-200px);
     }
     100% {
         opacity: 1;
-        transform: translateX(0); /* End in original position */
+        transform: translateX(0);
     }
 }
 
 /* Responsive Design */
 @media (max-width: 768px) {
+    .inspiration h1 {
+        font-size: 2rem; /* Smaller title for mobile */
+        margin-bottom: 15px;
+    }
+
     .content-row {
-        flex-direction: column; /* Stack elements vertically on mobile */
+        flex-direction: column; /* Stack elements vertically */
+        gap: 30px; /* Increased spacing between sections */
     }
 
     .content-row.row-reverse {
-        flex-direction: column; /* Same stacking for reversed rows */
+        flex-direction: column;
     }
 
-    .text, .image {
-        text-align: center; /* Center-align content on mobile */
+    .text {
+        text-align: center; /* Center-align text on mobile */
     }
 
     .image img {
-        width: 90%; /* Reduce image size on smaller screens */
+        width: 90%; /* Slightly smaller images on mobile */
         margin: 0 auto;
     }
 }
+
+@media (max-width: 480px) {
+    .inspiration h1 {
+        font-size: 1.8rem; /* Further adjust title size */
+    }
+
+    .text h2 {
+        font-size: 1.5rem;
+    }
+
+    .text p {
+        font-size: 0.9rem; /* Reduce paragraph text size */
+    }
+
+    .image img {
+        width: 100%; /* Full-width images for small screens */
+    }
+}
+
 
 
 
@@ -548,6 +506,119 @@ body {
         width: 50px; /* Set smaller icons for laptops */
     }
 }
+
+
+
+ /* Gallery Section */
+ .gallery-section {
+    padding: 50px 20px;
+    text-align: center;
+    background-color: #f9f9f9;
+}
+
+.gallery-title {
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+    color: #333;
+}
+
+.gallery-subtitle {
+    font-size: 1.2rem;
+    margin-bottom: 30px;
+    color: #555;
+}
+
+/* Gallery Grid */
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 3 items per row on desktop */
+    gap: 20px;
+    justify-items: center;
+}
+
+.gallery-item {
+    overflow: hidden;
+    position: relative;
+    width: 100%; /* Ensure items scale with the grid */
+    aspect-ratio: 1 / 1; /* Forces square boxes */
+}
+
+.gallery-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Ensures consistent appearance */
+    border-radius: 8px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.gallery-item:hover img {
+    transform: scale(1.1); /* Slight zoom effect */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); /* Subtle shadow on hover */
+}
+
+/* See More Button */
+.see-more {
+    margin-top: 30px;
+}
+
+.see-more .btn {
+    display: inline-block;
+    padding: 12px 30px;
+    background-color: white; /* Clean white background */
+    color: black; /* Black text for contrast */
+    text-decoration: none;
+    font-size: 1.2rem;
+    border-radius: 5px;
+    border: 2px solid black; /* Adds a stylish border */
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.see-more .btn:hover {
+    background-color: black; /* Black background on hover */
+    color: white; /* White text for reverse contrast */
+}
+
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+    .gallery-grid {
+        grid-template-columns: repeat(2, 1fr); /* 2 items per row on tablets */
+    }
+}
+
+@media (max-width: 768px) {
+    .gallery-grid {
+        grid-template-columns: repeat(2, 1fr); /* 2 items per row on smaller tablets */
+        gap: 15px;
+    }
+
+    .gallery-title {
+        font-size: 2rem;
+    }
+
+    .gallery-subtitle {
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .gallery-grid {
+        grid-template-columns: 1fr; /* 1 item per row on mobile */
+        gap: 10px;
+    }
+
+    .gallery-title {
+        font-size: 1.8rem;
+    }
+
+    .gallery-subtitle {
+        font-size: 0.9rem;
+    }
+}
+
+
+
+
 
 
 
@@ -755,7 +826,6 @@ body {
 
 
 
-
 /* General Section Styling */
 .contact-us {
     background-color: #f7f7f7;
@@ -772,7 +842,7 @@ body {
 
 .contact-us p {
     font-size: 1.2rem;
-    color: #777;
+    color: #555;
     margin-bottom: 40px;
 }
 
@@ -793,7 +863,7 @@ body {
     width: 30%;
     max-width: 350px;
     text-align: left;
-    transition: transform 0.3s ease;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .contact-detail h3 {
@@ -818,6 +888,44 @@ body {
 
 .contact-detail:hover {
     transform: translateY(-5px);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
+}
+
+/* Flags */
+.languages {
+    margin-top: 10px;
+}
+
+.languages .flag {
+    width: 30px;
+    height: auto;
+    margin: 0 5px;
+    display: inline-block;
+}
+
+/* Social Media */
+.social-media h3 {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+    color: #333;
+}
+
+.social-media ul {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+}
+
+.social-icon {
+    font-size: 1.5rem;
+    color: #666;
+    transition: color 0.3s ease;
+}
+
+.social-icon:hover {
+    color: #000;
 }
 
 /* Footer */
@@ -851,11 +959,59 @@ body {
     .contact-us p {
         font-size: 1rem;
     }
+
+    .languages .flag {
+        width: 25px;
+    }
 }
 
 
+.totop {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: black;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    font-size: 24px;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+    transition: background-color 0.3s, transform 0.3s;
+}
 
+.totop:hover {
+    background-color: #444;
+    transform: scale(1.1);
+}
 
+/* Show the button when scrolling near the footer */
+.show-button {
+    display: block; /* Make the button visible when this class is added */
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    .totop {
+        width: 40px;
+        height: 40px;
+        font-size: 18px;
+    }
+}
+
+@media (max-width: 480px) {
+    .totop {
+        width: 35px;
+        height: 35px;
+        font-size: 16px;
+    }
+}
 
 
 

@@ -1,0 +1,199 @@
+/* General Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  body {
+    font-family: Arial, sans-serif;
+    background-color: #f9f9f9;
+    color: #333;
+    line-height: 1.5;
+  }
+  
+  /* Back Button */
+  .back-button {
+    text-align: left;
+  }
+  
+  .back-button .btn {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: white; /* Clean white background */
+    color: black; /* Black text */
+    text-decoration: none; /* Remove underline */
+    font-size: 1rem;
+    font-weight: bold;
+    border: 2px solid black; /* Stylish black border */
+    border-radius: 5px; /* Rounded corners */
+    transition: background-color 0.3s ease, color 0.3s ease;
+  }
+  
+  .back-button .btn:hover {
+    background-color: black; /* Black background on hover */
+    color: white; /* White text on hover */
+  }
+  
+  
+  /* Gallery Section */
+  .gallery-section {
+    padding: 30px 20px;
+    text-align: center;
+  }
+  
+  .gallery-title {
+    font-size: 2rem;
+    margin-bottom: 15px;
+  }
+  
+  .gallery-description {
+    font-size: 1rem;
+    margin-bottom: 30px;
+    color: #555;
+  }
+  
+  /* Gallery Grid */
+  .gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 3x3 layout on large screens */
+    gap: 15px;
+  }
+  
+  .gallery-grid img {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 16 / 9; /* Ensures all images have the same aspect ratio */
+    object-fit: cover; /* Crops the image to fit the defined aspect ratio */
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  .gallery-grid img:hover {
+    transform: scale(1.05);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+  }
+  
+  /* Responsive Design */
+  @media (max-width: 1024px) {
+    .gallery-grid {
+      grid-template-columns: repeat(2, 1fr); /* 2 columns for tablets */
+    }
+  }
+  
+  @media (max-width: 768px) {
+    .gallery-grid {
+      grid-template-columns: repeat(1, 1fr); /* 1 column for mobile devices */
+    }
+  
+    .gallery-title {
+      font-size: 1.8rem;
+    }
+  
+    .gallery-description {
+      font-size: 0.9rem;
+    }
+  }
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  /* Social Media CTA Section */
+  .social-media-cta {
+    background: white;
+    color: black;
+    padding: 50px 20px;
+    text-align: center;
+    border-radius: 12px;
+    margin: 30px auto;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  }
+  
+  .social-media-cta .cta-content {
+    max-width: 800px;
+    margin: 0 auto;
+  }
+  
+  .cta-title {
+    font-size: 2rem;
+    font-weight: bold;
+    margin-bottom: 15px;
+  }
+  
+  .cta-text {
+    font-size: 1.2rem;
+    margin-bottom: 25px;
+    line-height: 1.6;
+  }
+  
+  .cta-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+  }
+  
+  .cta-button {
+    padding: 12px 20px;
+    font-size: 1rem;
+    font-weight: bold;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 8px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  .cta-button.facebook {
+    background-color: #3b5998;
+  }
+  
+  .cta-button.instagram {
+    background-color: #e4405f;
+  }
+  
+  .cta-button.twitter {
+    background-color: #1da1f2;
+  }
+  
+  .cta-button:hover {
+    transform: scale(1.1);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+  }
+  
+  /* Responsive Design */
+  @media (max-width: 768px) {
+    .cta-title {
+      font-size: 1.8rem;
+    }
+  
+    .cta-text {
+      font-size: 1rem;
+    }
+  
+    .cta-buttons {
+      flex-direction: column;
+    }
+  
+    .cta-button {
+      width: 100%;
+      max-width: 250px;
+      margin: 5px auto;
+    }
+  }
+  
+  
+  
+  
+  
