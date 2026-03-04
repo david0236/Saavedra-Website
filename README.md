@@ -1,24 +1,83 @@
-Saavedra: Website for Home Remodeling and Renovation Services
-Welcome to the repository for Saavedra, a company specializing in home remodeling, carpentry, painting, and overall improvement of living spaces. This project represents the digital face of Saavedra, showcasing their expertise, services, and helping potential customers connect easily.
+Saavedra – Home Remodeling & Renovation Website
 
-🌐The website is deployed at: https://saavedracarpenter.com/
+This repository contains the official website for Saavedra, a company focused on home remodeling, carpentry, painting, and complete home improvements.
 
-🚀 Project Overview
-This website was built for Saavedra, a company that transforms houses into dream homes. Their services include carpentry, painting, flooring, remodeling, and general home improvement. The primary goal of this website is to provide users with an elegant, user-friendly, and responsive platform to learn about the company's services, view past projects, and get in touch.
+This project represents the digital presence of the business — built to showcase services, past work, and make it easy for clients to get in touch.
 
-The website aims to:
+🌐 Live Website:
+https://saavedracarpenter.com/
 
-Present Saavedra’s services and expertise in an organized and professional way.
-Engage visitors with smooth animations and interactive features.
-Allow potential customers to contact Saavedra easily for quotes or consultations.
+🧪 Development / Test Version:
+https://david0236.github.io/Saavedra-Website/
 
-🛠 Technologies Used
-This website was built with the following technologies and tools:
+About The Project
 
-HTML5: For semantic and accessible web structure.
-CSS3: For styling and responsive design, including animations.
-JavaScript (ES6): For interactivity and smooth animations.
-Google Fonts: For elegant typography using the "Raleway" font.
-Responsive Design: Mobile-first approach, ensuring the website looks great on all devices.
-Intersection Observer API: To implement scroll-based animations where services appear one by one.
-Version Control: Git for project tracking.
+Saavedra is a company dedicated to transforming houses into comfortable, beautiful living spaces. From detailed carpentry work to full renovations, the goal is always quality and professionalism.
+
+This website was created to:
+
+Present the company’s services in a clear and professional way
+
+Showcase expertise and build trust with potential clients
+
+Provide an easy way for customers to request quotes or get in contact
+
+Create a smooth and modern browsing experience
+
+The focus was on keeping the design clean, responsive, and visually engaging without overcomplicating things.
+
+Features
+
+Responsive design (works on desktop, tablet, and mobile)
+
+Smooth scroll-based animations
+
+Service sections that animate into view
+
+Interactive map showing work locations
+
+Back-to-top button for better navigation
+
+Client reviews section (manually approved system)
+
+Clean and structured layout for easy navigation
+
+Technologies Used
+
+This website was built using:
+
+HTML5 – Semantic and structured markup
+
+CSS3 – Styling, layout, and animations
+
+JavaScript (ES6) – Interactivity and dynamic behavior
+
+Intersection Observer API – Scroll-triggered animations
+
+Leaflet.js – Interactive map integration
+
+Git – Version control and project tracking
+
+The project follows a responsive design approach to ensure a consistent experience across devices.
+
+Why I Built It This Way
+
+The goal wasn’t just to make a website that “looks good”, but one that:
+
+Feels smooth and modern
+
+Reflects professionalism
+
+Builds trust with potential clients
+
+Is easy to maintain and improve over time
+
+I genuinely enjoy working on websites like this — especially when they help real businesses grow and connect with their clients. Combining design, functionality, and communication is something I really like doing.
+
+If you'd like, I can also:
+
+Make it slightly more technical (if recruiters will see it)
+
+Or slightly more business-focused (if clients will see it)
+
+Or even add a small “Future Improvements” section to show growth mindset 🚀
