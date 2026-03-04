@@ -95,3 +95,44 @@ window.addEventListener("scroll", () => {
     backToTopButton.style.display = "none";
   }
 });
+
+document.addEventListener("DOMContentLoaded", function () {
+
+    fetch("reviews.json")
+        .then(response => response.json())
+        .then(data => {
+
+            const container = document.getElementById("reviewsContainer");
+
+            if (!container) return;
+
+            data.forEach(review => {
+
+                // Only show approved reviews (4+ stars)
+                if (review.rating >= 4) {
+
+                    let stars = "";
+                    for (let i = 0; i < review.rating; i++) {
+                        stars += "★";
+                    }
+
+                    const reviewCard = document.createElement("div");
+                    reviewCard.classList.add("review-card");
+
+                    reviewCard.innerHTML = `
+                        <div class="review-stars">${stars}</div>
+                        <div class="review-text">"${review.text}"</div>
+                        <div class="review-author">${review.name}</div>
+                        <div class="review-date">${review.date}</div>
+                    `;
+
+                    container.appendChild(reviewCard);
+                }
+            });
+
+        })
+        .catch(error => {
+            console.error("Error loading reviews:", error);
+        });
+
+});

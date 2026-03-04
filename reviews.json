@@ -1,0 +1,20 @@
+[
+  {
+    "name": "Sarah Mitchell",
+    "rating": 5,
+    "text": "Absolutely outstanding service from start to finish. The quality exceeded my expectations.",
+    "date": "January 2026"
+  },
+  {
+    "name": "Daniel Carter",
+    "rating": 5,
+    "text": "You can truly see the difference in quality. Highly recommended.",
+    "date": "December 2025"
+  },
+  {
+    "name": "Emma Richardson",
+    "rating": 4,
+    "text": "Very reliable and professional. Communication was excellent.",
+    "date": "November 2025"
+  }
+]
