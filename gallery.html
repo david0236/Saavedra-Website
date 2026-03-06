@@ -6,23 +6,35 @@
   <meta name="description" content="Saavedra Gallery - Explore our remodeling projects and craftsmanship.">
   <title>Gallery - Saavedra</title>
   <link rel="stylesheet" href="gallery.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
 </head>
 <body>
-  <!-- Back Button -->
-  <div class="back-button">
-    <a href="index.html" class="btn">&larr; Back to Homepage</a>
+
+  <!-- Top Bar: Back Button + Language Switcher -->
+  <div class="top-bar">
+    <a href="index.html" class="btn back-btn" data-key="back_btn">&larr; Back to Homepage</a>
+
+    <!-- LANGUAGE SWITCHER -->
+    <div class="language-switch">
+      <button class="lang-btn active" id="lang-en" aria-label="Switch to English">
+        <img src="./images/UK-flag.png" alt="English" class="flag-icon">
+        <span>EN</span>
+      </button>
+      <span class="lang-divider">|</span>
+      <button class="lang-btn" id="lang-es" aria-label="Cambiar a Espanol">
+        <img src="https://upload.wikimedia.org/wikipedia/en/9/9a/Flag_of_Spain.svg" alt="Espanol" class="flag-icon">
+        <span>ES</span>
+      </button>
+    </div>
   </div>
-  
 
   <main>
     <section class="gallery-section">
       <div class="container">
-        <h1 class="gallery-title">Our Work</h1>
-        <p class="gallery-description">Browse through our remodeling projects that showcase our craftsmanship and dedication to excellence.</p>
-        
-        <!-- Responsive Flexbox Gallery -->
+        <h1 class="gallery-title" data-key="gallery_title">Our Work</h1>
+        <p class="gallery-description" data-key="gallery_description">Browse through our remodeling projects that showcase our craftsmanship and dedication to excellence.</p>
+
         <div class="gallery-grid">
-          <!-- Images 3x3 -->
           <img src="./gallery/img10.jpg" alt="Saavedra Project 1">
           <img src="./gallery/img11.jpg" alt="Saavedra Project 2">
           <img src="./gallery/img12.jpg" alt="Saavedra Project 3">
@@ -33,29 +45,65 @@
           <img src="./gallery/img17.jpg" alt="Saavedra Project 8">
           <img src="./gallery/img18.jpg" alt="Saavedra Project 9">
           <img src="./gallery/img22.jpg" alt="Saavedra Project 10">
-          <img src="./gallery/img23.jpg" alt="Saavedra Project 10">
-          <img src="./gallery/img19.jpg" alt="Saavedra Project 10">
+          <img src="./gallery/img23.jpg" alt="Saavedra Project 11">
+          <img src="./gallery/img19.jpg" alt="Saavedra Project 12">
         </div>
       </div>
     </section>
 
     <section class="social-media-cta">
       <div class="cta-content">
-        <h2 class="cta-title">Follow Us on Social Media!</h2>
-        <p class="cta-text">Join our community to see more inspiring remodeling projects, behind-the-scenes content, and updates.</p>
+        <h2 class="cta-title" data-key="cta_title">Follow Us on Social Media!</h2>
+        <p class="cta-text" data-key="cta_text">Join our community to see more inspiring remodeling projects, behind-the-scenes content, and updates.</p>
         <div class="cta-buttons">
-          <a href="https://www.facebook.com/profile.php?id=100062992792063" class="cta-button facebook" target="_blank">Facebook</a>
-          <a href="https://www.instagram.com/danilo_saavedraltd?igsh=ZDRjb29yZG5pMGFl&utm_source=qr" class="cta-button instagram" target="_blank">Instagram</a>
+          <a href="https://www.facebook.com/profile.php?id=100062992792063" class="cta-button facebook" target="_blank">
+            <i class="fab fa-facebook-f"></i> Facebook
+          </a>
+          <a href="https://www.instagram.com/danilo_saavedraltd?igsh=ZDRjb29yZG5pMGFl&utm_source=qr" class="cta-button instagram" target="_blank">
+            <i class="fab fa-instagram"></i> Instagram
+          </a>
         </div>
       </div>
     </section>
-    
-  
-    
-
-
   </main>
 
- 
+  <script>
+    const translations = {
+      en: {
+        back_btn:            "\u2190 Back to Homepage",
+        gallery_title:       "Our Work",
+        gallery_description: "Browse through our remodeling projects that showcase our craftsmanship and dedication to excellence.",
+        cta_title:           "Follow Us on Social Media!",
+        cta_text:            "Join our community to see more inspiring remodeling projects, behind-the-scenes content, and updates.",
+      },
+      es: {
+        back_btn:            "\u2190 Volver al Inicio",
+        gallery_title:       "Nuestro Trabajo",
+        gallery_description: "Explora nuestros proyectos de reforma que demuestran nuestra artesania y dedicacion a la excelencia.",
+        cta_title:           "Siguenos en Redes Sociales!",
+        cta_text:            "Unete a nuestra comunidad para ver mas proyectos de reforma inspiradores, contenido detras de camaras y novedades.",
+      },
+    };
+
+    function setLanguage(lang) {
+      document.querySelectorAll("[data-key]").forEach(el => {
+        const key = el.getAttribute("data-key");
+        if (translations[lang] && translations[lang][key] !== undefined) {
+          el.textContent = translations[lang][key];
+        }
+      });
+      document.documentElement.lang = lang;
+      document.getElementById("lang-en").classList.toggle("active", lang === "en");
+      document.getElementById("lang-es").classList.toggle("active", lang === "es");
+      localStorage.setItem("saavedra_lang", lang);
+    }
+
+    document.getElementById("lang-en").addEventListener("click", () => setLanguage("en"));
+    document.getElementById("lang-es").addEventListener("click", () => setLanguage("es"));
+
+    const savedLang = localStorage.getItem("saavedra_lang") || "en";
+    setLanguage(savedLang);
+  </script>
+
 </body>
 </html>

@@ -17,20 +17,39 @@
             <img src="images/logo.jpg" alt="Company Logo" class="logo">
             <span class="company-name">SAAVEDRA CARPENTRY DESIGNS LTD</span>
         </div>
+
+        <!-- Nav links (hidden on mobile) -->
         <ul class="menu">
-            <li><a href="#">Home</a></li>
-            <li><a href="#about">About</a></li>
-            <li><a href="#services">Services</a></li>
-            <li><a href="#contact">Contact Us</a></li>
-            <li class="social-links">
+            <li><a href="#" data-key="nav_home">Home</a></li>
+            <li><a href="#about" data-key="nav_about">About</a></li>
+            <li><a href="#services" data-key="nav_services">Services</a></li>
+            <li><a href="#contact" data-key="nav_contact">Contact Us</a></li>
+        </ul>
+
+        <!-- Always-visible right side: language switcher + social icons -->
+        <div class="nav-right">
+            <!-- LANGUAGE SWITCHER -->
+            <div class="language-switch">
+                <button class="lang-btn active" id="lang-en" aria-label="Switch to English">
+                    <img src="./images/UK-flag.png" alt="English" class="flag-icon">
+                    <span>EN</span>
+                </button>
+                <span class="lang-divider">|</span>
+                <button class="lang-btn" id="lang-es" aria-label="Cambiar a Español">
+                    <img src="https://upload.wikimedia.org/wikipedia/en/9/9a/Flag_of_Spain.svg" alt="Español" class="flag-icon">
+                    <span>ES</span>
+                </button>
+            </div>
+
+            <div class="social-links">
                 <a href="https://www.facebook.com/profile.php?id=100062992792063" target="_blank" aria-label="Facebook">
                     <i class="fab fa-facebook"></i>
                 </a>
                 <a href="https://www.instagram.com/danilo_saavedra_melgar?igsh=ZDhoazVkazk4NmQ0" target="_blank" aria-label="Instagram">
                     <i class="fab fa-instagram"></i>
                 </a>
-            </li>
-        </ul>
+            </div>
+        </div>
     </section>
 
     <section class="hero-section">
@@ -39,8 +58,8 @@
                 <img src="images/image1.jpg" alt="Master carpenter at work">
             </div>
             <div class="hero-text">
-                <h1>Crafting Excellence, One Piece at a Time</h1>
-                <p>With more than 50 years of expertise in carpentry and construction, we transform your visions into reality. From custom furniture to complete renovations, we deliver unparalleled craftsmanship and dedication to every project.</p>
+                <h1 data-key="hero_title">Crafting Excellence, One Piece at a Time</h1>
+                <p data-key="hero_text">With more than 50 years of expertise in carpentry and construction, we transform your visions into reality. From custom furniture to complete renovations, we deliver unparalleled craftsmanship and dedication to every project.</p>
             </div>
         </div>
     </section>
@@ -48,8 +67,8 @@
     <div class="inspiration" id="about">
         <div class="content-row">
             <div class="text">
-                <h2>SINCE 1962, CRAFTING HOMES WITH PASSION AND PRECISION</h2>
-                <p>At Saavedra, we believe your home should be as unique as you are. That's why our expert design and construction teams collaborate closely with you to create a space that perfectly reflects your vision—not just for today, but for the future.
+                <h2 data-key="about_title1">SINCE 1962, CRAFTING HOMES WITH PASSION AND PRECISION</h2>
+                <p data-key="about_text1">At Saavedra, we believe your home should be as unique as you are. That's why our expert design and construction teams collaborate closely with you to create a space that perfectly reflects your vision—not just for today, but for the future.
                     From our very first meeting to the moment you step into your completed home, we are with you every step of the way. We listen to your ideas, understand your goals, and ensure every detail meets the highest standards of quality. With Saavedra, you're not just building a house—you're creating a place to call home for years to come.</p>
             </div>
             <div class="image">
@@ -61,42 +80,42 @@
                 <img src="./images/diseno-interior.jpg" alt="Image 3">
             </div>
             <div class="text">
-                <h2>LET US HELP YOU BUILD YOUR DREAM HOME</h2>
-                <p>Your dream is our mission. Whether it's a new home, a remodel, or a restoration project, Saavedra's dedication to craftsmanship and excellence turns every project into a masterpiece. Together, we'll build a home that exceeds your expectations and stands as a testament to your unique style and aspirations.</p>
+                <h2 data-key="about_title2">LET US HELP YOU BUILD YOUR DREAM HOME</h2>
+                <p data-key="about_text2">Your dream is our mission. Whether it's a new home, a remodel, or a restoration project, Saavedra's dedication to craftsmanship and excellence turns every project into a masterpiece. Together, we'll build a home that exceeds your expectations and stands as a testament to your unique style and aspirations.</p>
             </div>
         </div>
     </div>
 
     <div class="our-services" id="services">
-        <h1>Our Services</h1>
+        <h1 data-key="services_title">Our Services</h1>
         <div class="services-container">
             <div class="services-grid">
                 <div class="service-item" style="--animation-index: 1;">
                     <div class="icon"><img src="./images/icon1.png" alt="Icon 1"></div>
                     <div class="text">
-                        <h2>New Home Construction</h2>
-                        <p>At Saavedra, we specialize in building custom homes that are a perfect reflection of your vision and lifestyle. From the initial design to the final touches, we ensure every step is tailored to your needs, delivering a home you'll cherish for years to come. With our commitment to quality and detail, your dream home is within reach.</p>
+                        <h2 data-key="service1_title">New Home Construction</h2>
+                        <p data-key="service1_text">At Saavedra, we specialize in building custom homes that are a perfect reflection of your vision and lifestyle. From the initial design to the final touches, we ensure every step is tailored to your needs, delivering a home you'll cherish for years to come. With our commitment to quality and detail, your dream home is within reach.</p>
                     </div>
                 </div>
                 <div class="service-item" style="--animation-index: 2;">
                     <div class="icon"><img src="./images/icon2.png" alt="Icon 2"></div>
                     <div class="text">
-                        <h2>Remodeling</h2>
-                        <p>Transform your current space into something extraordinary. Whether it's modernizing your kitchen, reimagining your living room, or adding functional spaces, Saavedra takes pride in creating designs that enhance your home while maintaining its unique charm.</p>
+                        <h2 data-key="service2_title">Remodeling</h2>
+                        <p data-key="service2_text">Transform your current space into something extraordinary. Whether it's modernizing your kitchen, reimagining your living room, or adding functional spaces, Saavedra takes pride in creating designs that enhance your home while maintaining its unique charm.</p>
                     </div>
                 </div>
                 <div class="service-item" style="--animation-index: 3;">
                     <div class="icon"><img src="./images/icon3.png" alt="Icon 3"></div>
                     <div class="text">
-                        <h2>Restoration</h2>
-                        <p>Preserve the beauty and character of your home with our expert restoration services. From historical properties to modern structures, Saavedra brings spaces back to life with precision and care, blending craftsmanship with innovative techniques.</p>
+                        <h2 data-key="service3_title">Restoration</h2>
+                        <p data-key="service3_text">Preserve the beauty and character of your home with our expert restoration services. From historical properties to modern structures, Saavedra brings spaces back to life with precision and care, blending craftsmanship with innovative techniques.</p>
                     </div>
                 </div>
                 <div class="service-item" style="--animation-index: 4;">
                     <div class="icon"><img src="./images/icon4.png" alt="Icon 4"></div>
                     <div class="text">
-                        <h2>Painting</h2>
-                        <p>Elevate your home's look with our professional painting services. Whether it's interior, exterior, or specialty finishes, we use premium materials and techniques to achieve stunning, long-lasting results tailored to your preferences.</p>
+                        <h2 data-key="service4_title">Painting</h2>
+                        <p data-key="service4_text">Elevate your home's look with our professional painting services. Whether it's interior, exterior, or specialty finishes, we use premium materials and techniques to achieve stunning, long-lasting results tailored to your preferences.</p>
                     </div>
                 </div>
             </div>
@@ -105,8 +124,8 @@
 
     <section id="gallery" class="gallery-section">
         <div class="container">
-            <h2 class="gallery-title">Our Work</h2>
-            <p class="gallery-subtitle">Take a look at some of our recent remodeling projects.</p>
+            <h2 class="gallery-title" data-key="gallery_title">Our Work</h2>
+            <p class="gallery-subtitle" data-key="gallery_subtitle">Take a look at some of our recent remodeling projects.</p>
             <div class="gallery-grid">
                 <div class="gallery-item"><img src="./gallery/img4.jpg" alt="Project 1"></div>
                 <div class="gallery-item"><img src="./gallery/img5.jpg" alt="Project 2"></div>
@@ -119,7 +138,7 @@
                 <div class="gallery-item"><img src="./gallery/img9.jpg" alt="Project 9"></div>
             </div>
             <div class="see-more">
-                <a href="gallery.html" class="btn">See More</a>
+                <a href="gallery.html" class="btn" data-key="see_more">See More</a>
             </div>
         </div>
     </section>
@@ -127,14 +146,13 @@
     <!-- ===================== OUR CLIENTS ===================== -->
     <section class="our-clients">
         <div class="clients-header">
-            <h2 class="clients-title">Our Clients</h2>
-            <p class="clients-subtitle">From family homes to international developments, these are the brands and organisations that trust Saavedra.</p>
+            <h2 class="clients-title" data-key="clients_title">Our Clients</h2>
+            <p class="clients-subtitle" data-key="clients_subtitle">From family homes to international developments, these are the brands and organisations that trust Saavedra.</p>
         </div>
         <div class="marquee-wrapper">
             <div class="marquee-fade-left"></div>
             <div class="marquee-fade-right"></div>
             <div class="marquee-track">
-                <!-- Replace logo-text with <img> tags once you have real logos -->
                 <div class="logo-card"><span class="logo-text">ALBERTON<small>GROUP</small></span></div>
                 <div class="logo-card"><span class="logo-text">MERCER<small>DEVELOPMENTS</small></span></div>
                 <div class="logo-card"><span class="logo-text">NOVA<small>INTERIORS</small></span></div>
@@ -142,7 +160,6 @@
                 <div class="logo-card"><span class="logo-text">HELIX<small>CONSTRUCTION</small></span></div>
                 <div class="logo-card"><span class="logo-text">SOLARIS<small>HOMES</small></span></div>
                 <div class="logo-card"><span class="logo-text">VANTAGE<small>ESTATES</small></span></div>
-                <!-- duplicate set for seamless loop -->
                 <div class="logo-card"><span class="logo-text">ALBERTON<small>GROUP</small></span></div>
                 <div class="logo-card"><span class="logo-text">MERCER<small>DEVELOPMENTS</small></span></div>
                 <div class="logo-card"><span class="logo-text">NOVA<small>INTERIORS</small></span></div>
@@ -153,27 +170,23 @@
             </div>
         </div>
     </section>
-    <!-- ===================== END OUR CLIENTS ===================== -->
 
-<!-- ===================== Client Reviews ===================== -->
+    <!-- ===================== Client Reviews ===================== -->
     <section id="client-reviews">
-    <div class="reviews-wrapper">
-        <h2 class="reviews-title">What Our Clients Say</h2>
-        <p class="reviews-subtitle">
-            Real feedback from satisfied clients who trust our quality and professionalism.
-        </p>
-
-        <div class="reviews-container" id="reviewsContainer">
-            <!-- Reviews will load dynamically -->
+        <div class="reviews-wrapper">
+            <h2 class="reviews-title" data-key="reviews_title">What Our Clients Say</h2>
+            <p class="reviews-subtitle" data-key="reviews_subtitle">
+                Real feedback from satisfied clients who trust our quality and professionalism.
+            </p>
+            <div class="reviews-container" id="reviewsContainer">
+                <!-- Reviews will load dynamically -->
+            </div>
         </div>
-    </div>
-</section>
-
-
+    </section>
 
     <section class="our-products">
-        <h1>What Types of Products Do We Use?</h1>
-        <p>We use high-quality products for our services.</p>
+        <h1 data-key="products_title">What Types of Products Do We Use?</h1>
+        <p data-key="products_subtitle">We use high-quality products for our services.</p>
         <div class="products-bar">
             <div class="product-item"><img src="./images/product1.png" alt="Product 1"></div>
             <div class="product-item"><img src="./images/product7.png" alt="Product 1"></div>
@@ -186,40 +199,40 @@
     </section>
 
     <section class="countries-worked">
-        <h1>Countries We've Worked In</h1>
-        <h2>We are an international company</h2>
-        <p>Our expertise has reached across borders, delivering exceptional service worldwide.</p>
+        <h1 data-key="countries_title">Countries We've Worked In</h1>
+        <h2 data-key="countries_subtitle">We are an international company</h2>
+        <p data-key="countries_text">Our expertise has reached across borders, delivering exceptional service worldwide.</p>
         <div id="map" style="width: 100%; height: 400px;"></div>
     </section>
 
     <section class="contact-us" id="contact">
         <div class="contact-container">
-            <h1>Contact Us</h1>
-            <p>We're here to help! Reach out for a free consultation today.</p>
+            <h1 data-key="contact_title">Contact Us</h1>
+            <p data-key="contact_subtitle">We're here to help! Reach out for a free consultation today.</p>
             <div class="contact-info">
                 <div class="contact-detail">
-                    <h3>Free Consultation</h3>
-                    <p>We offer a free consultation to understand your needs and help you get started with our services.</p>
+                    <h3 data-key="consultation_title">Free Consultation</h3>
+                    <p data-key="consultation_text">We offer a free consultation to understand your needs and help you get started with our services.</p>
                 </div>
                 <div class="contact-detail">
-                    <h3>We Speak English and Spanish</h3>
+                    <h3 data-key="languages_title">We Speak English and Spanish</h3>
                     <div class="languages">
                         <img src="./images/UK-flag.png" class="flag">
                         <img src="https://upload.wikimedia.org/wikipedia/commons/9/9a/Flag_of_Spain.svg" alt="Spanish" class="flag">
                     </div>
-                    <p>Our team is fluent in both English and Spanish, so feel free to contact us in whichever language you prefer!</p>
+                    <p data-key="languages_text">Our team is fluent in both English and Spanish, so feel free to contact us in whichever language you prefer!</p>
                 </div>
                 <div class="contact-detail">
-                    <h3>Get In Touch</h3>
+                    <h3 data-key="getintouch_title">Get In Touch</h3>
                     <ul>
                         <li><strong>Email:</strong> saavedranilomelgar@gmail.com</li>
                         <li><strong>Phone:</strong> +44 7930 695089</li>
-                        <li><strong>Office Hours:</strong> Mon - Fri, 9 AM - 6 PM</li>
+                        <li><strong data-key="hours_label">Office Hours:</strong> <span data-key="hours_value">Mon - Fri, 9 AM - 6 PM</span></li>
                     </ul>
                 </div>
             </div>
             <div class="social-media">
-                <h3>Follow Us</h3>
+                <h3 data-key="follow_us">Follow Us</h3>
                 <ul>
                     <li><a href="https://www.facebook.com/profile.php?id=100062992792063" target="_blank" class="social-icon facebook"><i class="fab fa-facebook-f"></i></a></li>
                     <li><a href="https://www.instagram.com/danilo_saavedraltd?igsh=ZDRjb29yZG5pMGFl&utm_source=qr" target="_blank" class="social-icon instagram"><i class="fab fa-instagram"></i></a></li>
@@ -227,7 +240,7 @@
             </div>
         </div>
         <div class="footer">
-            <p>&copy; 2026 Saavedra Carpentry Designs LTD. All rights reserved.</p>
+            <p>&copy; 2026 Saavedra Carpentry Designs LTD. <span data-key="footer_rights">All rights reserved.</span></p>
         </div>
         <a href="#main" class="totop">↑</a>
     </section>
