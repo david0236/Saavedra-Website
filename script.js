@@ -199,6 +199,25 @@ const translations = {
         hours_value:         "Mon – Fri, 9 AM – 6 PM",
         follow_us:           "Follow Us",
         footer_rights:       "All rights reserved.",
+        /* partnership */
+        pn_kicker:           "In Partnership",
+        pn_title:            "Working in Partnership with Handymatt Ltd",
+        pn_subtitle:         "We've joined forces with Handymatt Ltd to take on larger projects and deliver a more complete service — the same Saavedra standards, with more we can do for you.",
+        pn_with:             "in partnership with",
+        pn_intro:            "Saavedra Carpentry Designs Ltd is proud to work in partnership with Handymatt Ltd, combining our experience, skilled workforce and resources to deliver high-quality carpentry, renovations, property maintenance and complete refurbishment projects across London and the surrounding areas.",
+        pn_cta:              "Start a project with us",
+        pn_services_title:   "Everything We Offer Together",
+        pn_services_sub:     "From bespoke joinery to full project handover — one team, one point of contact.",
+        pn_s1:               "Bespoke carpentry",
+        pn_s2:               "Complete refurbishments",
+        pn_s3:               "Kitchens and bathrooms",
+        pn_s4:               "Painting and decorating",
+        pn_s5:               "Flooring and doors",
+        pn_s6:               "Property maintenance",
+        pn_s7:               "Full project management",
+        pn_gallery_title:    "Projects Delivered Together",
+        pn_gallery_sub:      "A selection of work completed in collaboration.",
+        pn_see_more:         "See More Collaborations",
     },
 
     es: {
@@ -263,6 +282,25 @@ const translations = {
         hours_value:         "Lun – Vie, 9:00 – 18:00",
         follow_us:           "Síguenos",
         footer_rights:       "Todos los derechos reservados.",
+        /* partnership */
+        pn_kicker:           "En Colaboración",
+        pn_title:            "Trabajando en Colaboración con Handymatt Ltd",
+        pn_subtitle:         "Nos hemos unido a Handymatt Ltd para asumir proyectos de mayor envergadura y ofrecer un servicio más completo — con el mismo nivel de Saavedra y aún más cosas que podemos hacer por ti.",
+        pn_with:             "en colaboración con",
+        pn_intro:            "Saavedra Carpentry Designs Ltd se enorgullece de trabajar en colaboración con Handymatt Ltd, combinando nuestra experiencia, equipo cualificado y recursos para ofrecer carpintería de alta calidad, reformas, mantenimiento de propiedades y proyectos de reforma integral en Londres y alrededores.",
+        pn_cta:              "Empieza tu proyecto con nosotros",
+        pn_services_title:   "Todo lo que Ofrecemos Juntos",
+        pn_services_sub:     "Desde carpintería a medida hasta la entrega integral del proyecto — un solo equipo, un único interlocutor.",
+        pn_s1:               "Carpintería a medida",
+        pn_s2:               "Reformas completas",
+        pn_s3:               "Cocinas y baños",
+        pn_s4:               "Pintura y decoración",
+        pn_s5:               "Suelos y puertas",
+        pn_s6:               "Mantenimiento de propiedades",
+        pn_s7:               "Gestión integral de proyectos",
+        pn_gallery_title:    "Proyectos Realizados Juntos",
+        pn_gallery_sub:      "Una selección de trabajos realizados en colaboración.",
+        pn_see_more:         "Ver Más Colaboraciones",
     },
 };
 
@@ -299,3 +337,18 @@ document.getElementById("lang-es").addEventListener("click", () => setLanguage("
 
 /* apply saved / default language on first load */
 document.addEventListener("DOMContentLoaded", () => setLanguage(currentLang));
+
+
+/* ============================================================
+   PARTNERSHIP  ·  reveal-on-scroll (same pattern as services)
+   ============================================================ */
+const pnReveals = document.querySelectorAll(".pn-reveal");
+const pnObserver = new IntersectionObserver((entries, obs) => {
+    entries.forEach((entry, i) => {
+        if (entry.isIntersecting) {
+            setTimeout(() => entry.target.classList.add("visible"), i * 90);
+            obs.unobserve(entry.target);
+        }
+    });
+}, { threshold: 0.15 });
+pnReveals.forEach(el => pnObserver.observe(el));
