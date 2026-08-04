@@ -990,3 +990,50 @@ html, body {
 @media (max-width: 480px) {
     .totop { width: 35px; height: 35px; font-size: 16px; }
 }
+
+
+/* ============================================================
+   PARTNERSHIP SECTION  (Saavedra x Handymatt)
+   ============================================================ */
+.partnership { font-family: 'Open Sans', sans-serif; color: #555; }
+
+.pn-reveal { opacity: 0; transform: translateY(28px); transition: opacity .7s ease-out, transform .7s ease-out; }
+.pn-reveal.visible { opacity: 1; transform: translateY(0); }
+@media (prefers-reduced-motion: reduce) { .pn-reveal { opacity: 1; transform: none; transition: none; } }
+
+.pn-header { text-align: center; padding: 60px 20px 10px; }
+.pn-kicker { font-family: 'Raleway', sans-serif; font-size: .85rem; letter-spacing: .2em; text-transform: uppercase; color: #b5935a; font-weight: 600; }
+.pn-header h1 { font-family: 'Raleway', sans-serif; font-size: 2.5rem; color: #2c3e50; margin: 14px 0 12px; line-height: 1.2; }
+.pn-subtitle { font-size: 1.15rem; color: #666; max-width: 640px; margin: 0 auto; line-height: 1.7; }
+
+.pn-lockup { display: inline-flex; align-items: center; gap: 18px; margin-top: 30px; padding: 10px 24px; background: rgba(112,112,112,.04); border: 1px solid #eee; border-radius: 40px; }
+.pn-wm { font-family: 'Raleway', sans-serif; font-size: 1rem; font-weight: 700; letter-spacing: .02em; color: #2c3e50; }
+.pn-wm-partner { color: #b5935a; }
+.pn-with { font-size: .8rem; color: #999; font-style: italic; }
+
+.pn-intro { display: grid; grid-template-columns: 1.05fr .95fr; gap: 40px; align-items: center; max-width: 1100px; margin: 0 auto; padding: 40px 20px 60px; }
+.pn-intro-text p { font-size: 1.05rem; line-height: 1.85; color: #555; margin: 0 0 24px; }
+.pn-intro-image img { width: 100%; aspect-ratio: 5/4; object-fit: cover; border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,.1); }
+
+.pn-services { text-align: center; padding: 55px 20px; background-color: #f7f7f7; }
+.pn-services h2 { font-family: 'Raleway', sans-serif; font-size: 2rem; color: #333; margin: 0 0 8px; }
+.pn-services-sub { font-size: 1.1rem; color: #666; margin: 0 0 34px; }
+.pn-services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 18px; max-width: 940px; margin: 0 auto; text-align: left; }
+.pn-service { display: flex; align-items: center; gap: 14px; background: #fff; border: 1px solid #ddd; border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,.07); padding: 18px 20px; transition: transform .3s, box-shadow .3s; }
+.pn-service:hover { transform: translateY(-4px); box-shadow: 0 8px 18px rgba(0,0,0,.12); }
+.pn-service i { font-size: 1.4rem; color: #FF6347; width: 28px; text-align: center; }
+.pn-service span { font-size: 1rem; color: #333; }
+
+.pn-gallery { text-align: center; padding: 55px 20px; }
+.pn-gallery h2 { font-family: 'Raleway', sans-serif; font-size: 2rem; color: #333; margin: 0 0 8px; }
+.pn-gallery-sub { font-size: 1.1rem; color: #666; margin: 0 0 30px; }
+.pn-gallery .gallery-grid { max-width: 940px; margin: 0 auto; }
+
+@media (max-width: 900px) {
+    .pn-intro { grid-template-columns: 1fr; }
+    .pn-intro-image { order: -1; }
+}
+@media (max-width: 768px) {
+    .pn-header h1, .pn-services h2, .pn-gallery h2 { font-size: 1.8rem; }
+    .pn-lockup { flex-wrap: wrap; gap: 10px; justify-content: center; }
+}
