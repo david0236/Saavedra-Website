@@ -15,8 +15,8 @@
 <style>
 :root{
   --coral:#FF6347; --coral-dark:#E5502F; --tan:#b5935a; --tan-dark:#8f6f3f;
-  --ink:#2e2620; --ink-deep:#241d18; --paper:#ffffff; --warm:#faf7f2; --warm2:#f4ede2;
-  --border:#ddd; --text:#403c36; --muted:#7a756d;
+  --ink:#333333; --ink-deep:#2c3e50; --paper:#ffffff; --warm:#faf7f2; --warm2:#f4ede2; --gold:#f4b400;
+  --border:#ddd; --text:#555; --muted:#777;
 }
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
@@ -27,17 +27,17 @@ a{text-decoration:none;color:inherit}
 .wrap{max-width:1120px;margin:0 auto;padding:0 22px}
 
 /* preview banner */
-.preview-bar{background:var(--coral-dark);color:#fff;text-align:center;font-family:'Raleway';font-weight:600;font-size:12.5px;letter-spacing:.5px;padding:7px 14px}
+.preview-bar{background:var(--ink-deep);color:#fff;text-align:center;font-family:'Raleway';font-weight:600;font-size:12.5px;letter-spacing:.5px;padding:7px 14px}
 
 /* eyebrow / section headers */
-.eyebrow{font-family:'Raleway';font-weight:700;font-size:12px;letter-spacing:2.5px;text-transform:uppercase;color:var(--coral-dark)}
+.eyebrow{font-family:'Raleway';font-weight:700;font-size:12px;letter-spacing:2.5px;text-transform:uppercase;color:var(--tan)}
 .eyebrow.tan{color:var(--tan-dark)}
 .sec{padding:clamp(44px,7vw,80px) 0}
 .sec-head{text-align:center;max-width:640px;margin:0 auto clamp(28px,4vw,44px)}
 .sec-head h2{font-size:clamp(24px,4vw,34px);font-weight:800;margin:10px 0 8px}
 .sec-head p{color:var(--muted)}
 
-/* buttons — brand: black outline; coral for primary CTAs */
+/* buttons — brand: black outline; light (white) variant on dark backgrounds */
 .btn{display:inline-flex;align-items:center;justify-content:center;gap:9px;min-height:48px;padding:0 26px;
   border-radius:2px;font-family:'Raleway';font-weight:700;font-size:14px;letter-spacing:.6px;text-transform:uppercase;
   cursor:pointer;transition:.18s ease;border:2px solid var(--ink);color:var(--ink);background:transparent}
@@ -56,7 +56,7 @@ a{text-decoration:none;color:inherit}
 .brand .bs{font-family:'Raleway';font-weight:600;font-size:9px;color:var(--tan-dark);letter-spacing:2.5px}
 .nav-links{display:flex;align-items:center;gap:22px}
 .nav-links a{font-family:'Raleway';font-weight:600;font-size:13px;text-transform:uppercase;letter-spacing:.6px;color:var(--text)}
-.nav-links a:hover{color:var(--coral-dark)}
+.nav-links a:hover{color:var(--coral)}
 .lang{display:inline-flex;border:1px solid var(--border);border-radius:20px;overflow:hidden;font-family:'Raleway';font-weight:700;font-size:11px}
 .lang button{border:none;background:transparent;padding:6px 11px;cursor:pointer;color:var(--muted);font:inherit}
 .lang button.active{background:var(--ink);color:#fff}
@@ -64,7 +64,7 @@ a{text-decoration:none;color:inherit}
 
 /* hero */
 .hero{position:relative;color:#fff;text-align:center;min-height:min(78vh,620px);display:flex;align-items:center;justify-content:center}
-.hero-bg{position:absolute;inset:0;background:url('/images/image1.jpg') center/cover no-repeat;filter:brightness(.42) saturate(1.05)}
+.hero-bg{position:absolute;inset:0;background:url('../images/image1.jpg') center/cover no-repeat;filter:brightness(.42) saturate(1.05)}
 .hero-bg::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(46,38,32,.35),rgba(46,38,32,.65))}
 .hero .wrap{position:relative;z-index:2;padding-top:70px;padding-bottom:70px}
 .hero h1{color:#fff;font-size:clamp(30px,6vw,52px);font-weight:800;max-width:760px;margin:14px auto 0}
@@ -79,7 +79,7 @@ a{text-decoration:none;color:inherit}
 .about-imgs{display:grid;grid-template-columns:1fr 1fr;gap:14px}
 .about-imgs img{border-radius:8px;height:100%;min-height:170px;object-fit:cover;border:1px solid #ece4d9}
 .stats{display:flex;gap:30px;flex-wrap:wrap;margin-top:6px}
-.stats .n{font-family:'Raleway';font-weight:800;font-size:30px;color:var(--coral-dark);line-height:1}
+.stats .n{font-family:'Raleway';font-weight:800;font-size:30px;color:var(--ink-deep);line-height:1}
 .stats .l{font-size:12.5px;color:var(--muted)}
 
 /* partnership */
@@ -93,13 +93,13 @@ a{text-decoration:none;color:inherit}
 .chips{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;max-width:760px;margin:26px auto 0}
 .chip{display:inline-flex;align-items:center;gap:8px;background:#fff;border:1px solid var(--tan);border-radius:30px;
   padding:9px 16px;font-family:'Raleway';font-weight:600;font-size:13px;color:var(--ink)}
-.chip i{color:var(--tan-dark)}
+.chip i{color:var(--coral)}
 
 /* services */
 .svc-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:18px}
 .svc{background:#fff;border:1px solid var(--border);border-radius:6px;padding:26px 24px;transition:.2s}
-.svc:hover{border-color:var(--coral);box-shadow:0 6px 22px rgba(46,38,32,.07);transform:translateY(-3px)}
-.svc .ic{width:58px;height:58px;border-radius:50%;background:#fbeee9;display:flex;align-items:center;justify-content:center;margin-bottom:16px}
+.svc:hover{border-color:var(--tan);box-shadow:0 6px 22px rgba(46,38,32,.07);transform:translateY(-3px)}
+.svc .ic{width:58px;height:58px;border-radius:50%;background:#f4efe6;display:flex;align-items:center;justify-content:center;margin-bottom:16px}
 .svc .ic img{width:30px;height:30px}
 .svc h3{font-size:17px;font-weight:700;margin-bottom:8px}
 .svc p{font-size:13.5px;color:var(--muted)}
@@ -114,7 +114,7 @@ a{text-decoration:none;color:inherit}
 /* reviews + clients */
 .rev-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:18px}
 .rev{background:#fff;border:1px solid var(--border);border-radius:6px;padding:24px}
-.rev .stars{color:var(--coral);letter-spacing:2px;margin-bottom:10px}
+.rev .stars{color:var(--gold);letter-spacing:2px;margin-bottom:10px}
 .rev .txt{font-size:14px;color:#5c574f;margin-bottom:14px;font-style:italic}
 .rev .who{font-family:'Raleway';font-weight:700;font-size:13.5px;color:var(--ink)}
 .rev .date{font-size:12px;color:var(--muted)}
@@ -128,7 +128,7 @@ a{text-decoration:none;color:inherit}
 .contact h2{color:#fff;font-size:clamp(24px,4vw,32px);font-weight:800;margin:10px 0 10px}
 .contact .sub{color:#cfc7bc;max-width:460px;margin:0 auto 30px}
 .cinfo{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:22px;max-width:600px;margin:0 auto 30px}
-.cinfo i{font-size:24px;color:var(--coral)}
+.cinfo i{font-size:24px;color:var(--tan)}
 .cinfo .v{font-size:13px;color:#d8d0c6;margin-top:8px;word-break:break-word}
 
 /* footer */
@@ -190,7 +190,7 @@ a{text-decoration:none;color:inherit}
 <header class="nav">
   <div class="wrap">
     <a class="brand" href="#top">
-      <img src="/images/logo.jpg" alt="Saavedra Carpentry logo">
+      <img src="../images/logo.jpg" alt="Saavedra Carpentry logo">
       <span>
         <span class="bt">SAAVEDRA</span><br>
         <span class="bs">CARPENTRY DESIGNS</span>
@@ -215,11 +215,11 @@ a{text-decoration:none;color:inherit}
 <section class="hero" id="top">
   <div class="hero-bg"></div>
   <div class="wrap">
-    <span class="eyebrow" style="color:#e6a37f" data-key="hero_eyebrow">London · Since 1962</span>
+    <span class="eyebrow" style="color:#d9c8a6" data-key="hero_eyebrow">London · Since 1962</span>
     <h1 data-key="hero_title">Crafting Excellence, One Piece at a Time</h1>
     <p data-key="hero_text">With more than 50 years of expertise in carpentry and construction, we transform your visions into reality.</p>
     <div class="hero-cta">
-      <a href="#contact" class="btn btn-coral" data-key="cta_quote">Get a Free Quote</a>
+      <a href="#contact" class="btn btn-light" data-key="cta_quote">Get a Free Quote</a>
       <a href="#work" class="btn btn-light" data-key="cta_work">See Our Work</a>
     </div>
   </div>
@@ -239,8 +239,8 @@ a{text-decoration:none;color:inherit}
       </div>
     </div>
     <div class="about-imgs reveal">
-      <img src="/images/image2.jpg" alt="Saavedra craftsmanship" loading="lazy">
-      <img src="/images/diseno-interior.jpg" alt="Finished interior by Saavedra" loading="lazy">
+      <img src="../images/image2.jpg" alt="Saavedra craftsmanship" loading="lazy">
+      <img src="../images/diseno-interior.jpg" alt="Finished interior by Saavedra" loading="lazy">
     </div>
   </div>
 </section>
@@ -279,10 +279,10 @@ a{text-decoration:none;color:inherit}
       <h2 data-key="services_title">Our Services</h2>
     </div>
     <div class="svc-grid stagger">
-      <div class="svc reveal"><div class="ic"><img src="/images/icon1.png" alt=""></div><h3 data-key="service1_title">New Home Construction</h3><p data-key="service1_text">Custom homes built around your vision, from first design to final touch.</p></div>
-      <div class="svc reveal"><div class="ic"><img src="/images/icon2.png" alt=""></div><h3 data-key="service2_title">Remodeling</h3><p data-key="service2_text">Kitchens, living spaces and extensions that transform your home.</p></div>
-      <div class="svc reveal"><div class="ic"><img src="/images/icon3.png" alt=""></div><h3 data-key="service3_title">Restoration</h3><p data-key="service3_text">Bringing period and modern properties back to life with care.</p></div>
-      <div class="svc reveal"><div class="ic"><img src="/images/icon4.png" alt=""></div><h3 data-key="service4_title">Painting</h3><p data-key="service4_text">Interior, exterior and specialty finishes with premium materials.</p></div>
+      <div class="svc reveal"><div class="ic"><img src="../images/icon1.png" alt=""></div><h3 data-key="service1_title">New Home Construction</h3><p data-key="service1_text">Custom homes built around your vision, from first design to final touch.</p></div>
+      <div class="svc reveal"><div class="ic"><img src="../images/icon2.png" alt=""></div><h3 data-key="service2_title">Remodeling</h3><p data-key="service2_text">Kitchens, living spaces and extensions that transform your home.</p></div>
+      <div class="svc reveal"><div class="ic"><img src="../images/icon3.png" alt=""></div><h3 data-key="service3_title">Restoration</h3><p data-key="service3_text">Bringing period and modern properties back to life with care.</p></div>
+      <div class="svc reveal"><div class="ic"><img src="../images/icon4.png" alt=""></div><h3 data-key="service4_title">Painting</h3><p data-key="service4_text">Interior, exterior and specialty finishes with premium materials.</p></div>
     </div>
   </div>
 </section>
@@ -296,15 +296,15 @@ a{text-decoration:none;color:inherit}
       <p data-key="gallery_subtitle">Take a look at some of our recent remodeling projects.</p>
     </div>
     <div class="gal-grid stagger">
-      <a href="/gallery.html"><img src="/gallery/img4.jpg" alt="Saavedra project" loading="lazy"></a>
-      <a href="/gallery.html"><img src="/gallery/img5.jpg" alt="Saavedra project" loading="lazy"></a>
-      <a href="/gallery.html"><img src="/gallery/img2.jpg" alt="Saavedra project" loading="lazy"></a>
-      <a href="/gallery.html"><img src="/gallery/img1.jpg" alt="Saavedra project" loading="lazy"></a>
-      <a href="/gallery.html"><img src="/gallery/img3.jpg" alt="Saavedra project" loading="lazy"></a>
-      <a href="/gallery.html"><img src="/gallery/img8.jpg" alt="Saavedra project" loading="lazy"></a>
+      <a href="../gallery.html"><img src="../gallery/img4.jpg" alt="Saavedra project" loading="lazy"></a>
+      <a href="../gallery.html"><img src="../gallery/img5.jpg" alt="Saavedra project" loading="lazy"></a>
+      <a href="../gallery.html"><img src="../gallery/img2.jpg" alt="Saavedra project" loading="lazy"></a>
+      <a href="../gallery.html"><img src="../gallery/img1.jpg" alt="Saavedra project" loading="lazy"></a>
+      <a href="../gallery.html"><img src="../gallery/img3.jpg" alt="Saavedra project" loading="lazy"></a>
+      <a href="../gallery.html"><img src="../gallery/img8.jpg" alt="Saavedra project" loading="lazy"></a>
     </div>
     <div style="text-align:center;margin-top:26px">
-      <a href="/gallery.html" class="btn" data-key="see_more">See More</a>
+      <a href="../gallery.html" class="btn" data-key="see_more">See More</a>
     </div>
   </div>
 </section>
@@ -332,7 +332,7 @@ a{text-decoration:none;color:inherit}
 <section class="sec contact" id="contact">
   <div class="wrap">
     <div class="sec-head reveal" style="max-width:560px">
-      <span class="eyebrow" style="color:#e6a37f" data-key="contact_eyebrow">Get In Touch</span>
+      <span class="eyebrow" style="color:#d9c8a6" data-key="contact_eyebrow">Get In Touch</span>
       <h2 data-key="contact_title">Contact Us</h2>
       <p class="sub" data-key="consultation_text">We offer a free consultation to understand your needs and help you get started.</p>
     </div>
@@ -341,7 +341,7 @@ a{text-decoration:none;color:inherit}
       <div><i class="fa-solid fa-phone"></i><div class="v">+44 7930 695089</div></div>
       <div><i class="fa-regular fa-clock"></i><div class="v" data-key="hours_value">Mon – Fri, 9 AM – 6 PM</div></div>
     </div>
-    <a href="mailto:saavedranilomelgar@gmail.com" class="btn btn-coral" data-key="contact_cta">Request Your Free Quote</a>
+    <a href="mailto:saavedranilomelgar@gmail.com" class="btn btn-light" data-key="contact_cta">Request Your Free Quote</a>
   </div>
 </section>
 
@@ -446,7 +446,7 @@ document.querySelectorAll(".stagger").forEach(g=>{
 document.querySelectorAll(".reveal").forEach(el=>io.observe(el));
 
 /* ---- reviews from the real /reviews.json ---- */
-fetch("/reviews.json").then(r=>r.json()).then(data=>{
+fetch("../reviews.json").then(r=>r.json()).then(data=>{
   const c = document.getElementById("reviewsContainer");
   if(!c) return;
   data.filter(r=>r.rating>=4).forEach((r,i)=>{
