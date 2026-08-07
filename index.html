@@ -1,304 +1,640 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Saavedra's Services</title>
-    <link rel="stylesheet" href="./style.css">
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
-    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
-    <script src="https://kit.fontawesome.com/b15f06df26.js" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Saavedra Carpentry Designs | London Carpentry & Renovations Since 1962</title>
+<meta name="description" content="Saavedra Carpentry Designs — bespoke carpentry, renovations and complete refurbishments across London since 1962. Request a free quote today.">
+<meta name="robots" content="noindex">
+<!-- Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Raleway:wght@500;600;700;800&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+<!-- Icons -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<!-- Map -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css">
+<style>
+:root{
+  --ink:#333333; --slate:#2c3e50; --slate-deep:#243342;
+  --tan:#b5935a; --tan-dark:#8f6f3f; --gold:#f4b400;
+  --paper:#ffffff; --bg:#f7f7f7;
+  --border:#ddd; --text:#555; --muted:#777;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'Open Sans',system-ui,sans-serif;color:var(--text);line-height:1.65;background:var(--paper);overflow-x:hidden}
+h1,h2,h3,.rlw{font-family:'Raleway',sans-serif;color:var(--ink);line-height:1.2}
+img{max-width:100%;display:block}
+a{text-decoration:none;color:inherit}
+.wrap{max-width:1120px;margin:0 auto;padding:0 22px}
+
+/* preview banner */
+.preview-bar{background:var(--slate);color:#fff;text-align:center;font-family:'Raleway';font-weight:600;font-size:12.5px;letter-spacing:.5px;padding:7px 14px}
+
+/* eyebrow / section headers */
+.eyebrow{font-family:'Raleway';font-weight:700;font-size:12px;letter-spacing:2.5px;text-transform:uppercase;color:var(--tan)}
+.sec{padding:clamp(46px,7vw,84px) 0}
+.sec-head{text-align:center;max-width:640px;margin:0 auto clamp(28px,4vw,44px)}
+.sec-head h2{font-size:clamp(24px,4vw,34px);font-weight:800;margin:10px 0 8px}
+.sec-head p{color:var(--muted)}
+
+/* buttons — neutral only: dark outline, white outline, and a bold slate primary */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:9px;min-height:48px;padding:0 26px;
+  border-radius:2px;font-family:'Raleway';font-weight:700;font-size:14px;letter-spacing:.6px;text-transform:uppercase;
+  cursor:pointer;transition:background .18s ease,color .18s ease,border-color .18s ease,transform .12s ease,box-shadow .18s ease;
+  border:2px solid var(--ink);color:var(--ink);background:transparent}
+.btn:hover{background:var(--ink);color:#fff}
+.btn:active{transform:scale(.97)}
+.btn-light{border-color:#fff;color:#fff}
+.btn-light:hover{background:#fff;color:var(--ink)}
+.btn-primary{border:2px solid var(--slate);background:var(--slate);color:#fff;box-shadow:0 6px 18px rgba(44,62,80,.22)}
+.btn-primary:hover{background:var(--slate-deep);border-color:var(--slate-deep);color:#fff;transform:translateY(-2px);box-shadow:0 10px 26px rgba(44,62,80,.30)}
+
+/* nav */
+.nav{position:sticky;top:0;z-index:40;background:rgba(255,255,255,.97);backdrop-filter:saturate(180%) blur(6px);border-bottom:1px solid #eee}
+.nav .wrap{display:flex;align-items:center;justify-content:space-between;gap:14px;padding-top:12px;padding-bottom:12px}
+.brand{display:flex;align-items:center;gap:11px}
+.brand img{width:44px;height:44px;border-radius:50%;object-fit:cover;border:1px solid #e6e0d7}
+.brand .bt{font-family:'Raleway';font-weight:800;font-size:16px;color:var(--ink);letter-spacing:1px;line-height:1}
+.brand .bs{font-family:'Raleway';font-weight:600;font-size:9px;color:var(--tan-dark);letter-spacing:2.5px}
+.nav-links{display:flex;align-items:center;gap:22px}
+.nav-links a{font-family:'Raleway';font-weight:600;font-size:13px;text-transform:uppercase;letter-spacing:.6px;color:var(--text);transition:color .18s ease}
+.nav-links a:hover{color:var(--slate)}
+.lang{display:inline-flex;border:1px solid var(--border);border-radius:20px;overflow:hidden;font-family:'Raleway';font-weight:700;font-size:11px}
+.lang button{border:none;background:transparent;padding:6px 11px;cursor:pointer;color:var(--muted);font:inherit}
+.lang button.active{background:var(--ink);color:#fff}
+.menu-toggle{display:none;background:none;border:none;font-size:22px;color:var(--ink);cursor:pointer}
+.nav-close{display:none;position:absolute;top:16px;right:18px;background:none;border:none;font-size:24px;color:var(--ink);cursor:pointer}
+.backdrop{display:none}
+
+/* hero */
+.hero{position:relative;color:#fff;text-align:center;min-height:min(78vh,620px);display:flex;align-items:center;justify-content:center}
+.hero-bg{position:absolute;inset:0;background:url('images/image1.jpg') center/cover no-repeat;filter:brightness(.42) saturate(1.05)}
+.hero-bg::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(20,24,30,.35),rgba(20,24,30,.68))}
+.hero .wrap{position:relative;z-index:2;padding-top:70px;padding-bottom:70px}
+.hero h1{color:#fff;font-size:clamp(30px,6vw,52px);font-weight:800;max-width:760px;margin:14px auto 0}
+.hero p{max-width:540px;margin:18px auto 28px;color:#ece6dd;font-size:clamp(15px,2.2vw,17px)}
+.hero-cta{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+
+/* about */
+.about{background:var(--bg)}
+.about-grid{display:grid;grid-template-columns:1.1fr 1fr;gap:clamp(24px,4vw,48px);align-items:center}
+.about h2{font-size:clamp(22px,3.4vw,30px);font-weight:800;margin:10px 0 14px}
+.about p{color:#5c574f;margin-bottom:18px}
+.about-imgs{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.about-imgs img{border-radius:8px;height:100%;min-height:170px;object-fit:cover;border:1px solid #e6e6e6}
+.stats{display:flex;gap:30px;flex-wrap:wrap;margin-top:6px}
+.stats .n{font-family:'Raleway';font-weight:800;font-size:30px;color:var(--slate);line-height:1;display:inline-block}
+.stats .l{font-size:12.5px;color:var(--muted)}
+
+/* partnership */
+.partner{background:#fff;border-top:1px solid var(--border);text-align:center}
+.pn-logos{display:flex;align-items:center;justify-content:center;gap:clamp(16px,4vw,40px);flex-wrap:wrap;margin:6px auto 4px}
+.pn-logo{display:flex;flex-direction:column;align-items:center;gap:10px}
+.pn-logo img{width:96px;height:96px;border-radius:50%;object-fit:cover;border:1px solid #e6e0d7;box-shadow:0 6px 18px rgba(0,0,0,.08);background:#fff}
+.pn-logo .ph{width:96px;height:96px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:var(--slate);color:#fff;font-family:'Raleway';font-weight:800;font-size:15px;letter-spacing:.5px;box-shadow:0 6px 18px rgba(0,0,0,.10);text-align:center;line-height:1.15;padding:8px}
+.pn-logo .cap{font-family:'Raleway';font-weight:700;font-size:12px;letter-spacing:1px;color:var(--muted);text-transform:uppercase}
+.pn-shake{width:64px;height:64px;border-radius:50%;background:var(--tan);color:#fff;display:flex;align-items:center;justify-content:center;font-size:26px;box-shadow:0 6px 16px rgba(181,147,90,.35);flex:0 0 auto}
+.partner h2{font-size:clamp(22px,3.6vw,30px);font-weight:800;max-width:600px;margin:26px auto 12px}
+.partner .pn-intro{max-width:620px;margin:0 auto 26px;color:#5c574f}
+.chips{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;max-width:780px;margin:30px auto 0}
+.chip{display:inline-flex;align-items:center;gap:8px;background:#fff;border:1px solid var(--border);border-radius:30px;
+  padding:9px 16px;font-family:'Raleway';font-weight:600;font-size:13px;color:var(--ink);transition:transform .2s ease,border-color .2s ease,box-shadow .2s ease}
+.chip:hover{transform:translateY(-2px);border-color:var(--tan);box-shadow:0 4px 14px rgba(44,62,80,.10)}
+.chip i{color:var(--tan)}
+
+/* services */
+.svc-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:18px}
+.svc{background:#fff;border:1px solid var(--border);border-radius:6px;padding:26px 24px;transition:.2s}
+.svc:hover{border-color:var(--slate);box-shadow:0 6px 22px rgba(44,62,80,.08);transform:translateY(-3px)}
+.svc .ic{width:58px;height:58px;border-radius:50%;background:#eef2f5;display:flex;align-items:center;justify-content:center;margin-bottom:16px;transition:transform .25s ease,background .25s ease}
+.svc:hover .ic{transform:translateY(-3px) scale(1.06);background:#e6edf3}
+.svc .ic img{width:30px;height:30px;transition:transform .25s ease}
+.svc:hover .ic img{transform:scale(1.06)}
+.svc h3{font-size:17px;font-weight:700;margin-bottom:8px}
+.svc p{font-size:13.5px;color:var(--muted)}
+
+/* gallery */
+.gallery{background:var(--bg)}
+.gal-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px}
+.gal-grid a{position:relative;border-radius:8px;overflow:hidden;aspect-ratio:4/3;border:1px solid #e6e6e6}
+.gal-grid img{width:100%;height:100%;object-fit:cover;transition:.4s}
+.gal-grid a:hover img{transform:scale(1.06)}
+.gal-grid a::after{content:"";position:absolute;inset:0;background:rgba(36,42,52,0);transition:background .35s ease;pointer-events:none}
+.gal-grid a:hover::after{background:rgba(36,42,52,.42)}
+.gal-grid a::before{content:"+";position:absolute;z-index:2;top:50%;left:50%;transform:translate(-50%,-50%) scale(.5);
+  color:#fff;font-family:'Raleway';font-weight:600;font-size:40px;line-height:1;opacity:0;transition:opacity .35s ease,transform .35s ease;pointer-events:none}
+.gal-grid a:hover::before{opacity:1;transform:translate(-50%,-50%) scale(1)}
+
+/* brands / products */
+.brands{background:#fff}
+.brand-band{background:var(--bg);border-radius:12px;padding:26px 18px;margin-top:6px}
+.brand-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:16px;align-items:center}
+.brand-cell{background:#fff;border:1px solid #ececec;border-radius:8px;height:110px;display:flex;align-items:center;justify-content:center;padding:16px;transition:transform .2s ease,box-shadow .2s ease}
+.brand-cell:hover{transform:translateY(-3px);box-shadow:0 6px 18px rgba(0,0,0,.06)}
+.brand-cell img{max-height:56px;width:auto;object-fit:contain;filter:grayscale(1);opacity:.75;transition:.25s}
+.brand-cell:hover img{filter:none;opacity:1}
+
+/* reviews */
+.rev-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:18px}
+.rev{background:#fff;border:1px solid var(--border);border-radius:6px;padding:24px}
+.rev .stars{color:var(--gold);letter-spacing:2px;margin-bottom:10px}
+.rev .txt{font-size:14px;color:#5c574f;margin-bottom:14px;font-style:italic}
+.rev .who{font-family:'Raleway';font-weight:700;font-size:13.5px;color:var(--ink)}
+.rev .date{font-size:12px;color:var(--muted)}
+
+/* clients marquee */
+.clients{background:var(--bg);text-align:center;overflow:hidden}
+.marquee{position:relative;margin-top:10px;-webkit-mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent);mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent)}
+.marquee-track{display:flex;width:max-content;gap:14px;animation:scrollx 32s linear infinite}
+.clients:hover .marquee-track{animation-play-state:paused}
+.client-pill{display:flex;align-items:center;justify-content:center;min-width:200px;height:74px;padding:0 26px;background:#fff;border:1px solid var(--border);border-radius:8px;
+  font-family:'Raleway';font-weight:700;font-size:14px;letter-spacing:1px;color:#7f8a94}
+@keyframes scrollx{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+/* countries map */
+.countries{background:#fff;text-align:center}
+#map{height:400px;border-radius:10px;border:1px solid var(--border);margin-top:8px;z-index:1}
+.leaflet-container{font-family:'Open Sans',sans-serif}
+
+/* contact */
+.contact{background:var(--slate);color:#fff}
+.contact .sec-head h2{color:#fff}
+.contact .sec-head p{color:#cfd6dd}
+.contact .eyebrow{color:#d9c8a6}
+.contact-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:clamp(22px,4vw,44px);align-items:start;margin-top:8px}
+.cinfo-list{display:flex;flex-direction:column;gap:18px}
+.cinfo-list .row{display:flex;align-items:flex-start;gap:14px}
+.cinfo-list i{font-size:18px;color:var(--tan);width:26px;text-align:center;margin-top:3px}
+.cinfo-list .k{font-family:'Raleway';font-weight:700;font-size:12px;letter-spacing:1px;text-transform:uppercase;color:#aeb8c2}
+.cinfo-list .v{font-size:14px;color:#eef2f5;word-break:break-word}
+.csoc{display:flex;gap:14px;margin-top:8px;font-size:18px}
+.csoc a{width:40px;height:40px;border-radius:50%;background:rgba(255,255,255,.08);display:flex;align-items:center;justify-content:center;transition:.2s}
+.csoc a:hover{background:#fff;color:var(--slate)}
+.cform{background:#fff;border-radius:12px;padding:26px;color:var(--ink);box-shadow:0 14px 40px rgba(0,0,0,.18)}
+.cform .fld{margin-bottom:14px}
+.cform label{display:block;font-family:'Raleway';font-weight:600;font-size:12px;letter-spacing:.5px;text-transform:uppercase;color:#6a7178;margin-bottom:6px}
+.cform input,.cform textarea{width:100%;border:1px solid var(--border);border-radius:6px;padding:12px 14px;font:15px 'Open Sans',sans-serif;color:var(--ink);background:#fbfbfc;transition:border-color .18s ease,box-shadow .18s ease}
+.cform input:focus,.cform textarea:focus{outline:none;border-color:var(--slate);box-shadow:0 0 0 3px rgba(44,62,80,.12);background:#fff}
+.cform textarea{resize:vertical;min-height:120px}
+.cform .btn-primary{width:100%;margin-top:4px}
+.cform .note{font-size:12px;color:var(--muted);margin-top:10px;text-align:center}
+
+/* footer */
+.footer{background:var(--slate-deep);color:#9aa7b3;padding:26px 0}
+.footer .wrap{display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap;font-size:12.5px}
+.footer .fb{font-family:'Raleway';font-weight:800;color:#e8edf2;letter-spacing:1px}
+.footer .soc{display:flex;gap:14px;align-items:center;font-size:16px}
+.footer .soc a:hover{color:#fff}
+
+/* fade-in on scroll */
+.reveal{opacity:0;transform:translateY(24px);transition:opacity .7s ease,transform .7s ease}
+.reveal.visible{opacity:1;transform:none}
+
+/* entrance + hover polish */
+@keyframes heroUp{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:none}}
+@keyframes kenburns{0%{transform:scale(1.04)}100%{transform:scale(1.15)}}
+.hero-bg{animation:kenburns 26s ease-in-out infinite alternate}
+.hero .eyebrow{animation:heroUp .7s .05s both}
+.hero h1{animation:heroUp .8s .18s both}
+.hero p{animation:heroUp .8s .32s both}
+.hero-cta{animation:heroUp .8s .46s both}
+
+/* responsive */
+@media(max-width:900px){
+  .about-grid{grid-template-columns:1fr}
+  .contact-grid{grid-template-columns:1fr}
+  .menu-toggle{display:block;z-index:1001}
+  .nav-close{display:block}
+  .nav-links{position:fixed;top:0;right:0;height:100vh;height:100dvh;width:min(82vw,320px);background:#fff;
+    flex-direction:column;align-items:stretch;justify-content:flex-start;gap:0;padding:72px 0 24px;
+    transform:translateX(100%);transition:transform .28s ease;box-shadow:-10px 0 40px rgba(0,0,0,.18);z-index:1000;overflow-y:auto}
+  .nav-links.open{transform:none}
+  .nav-links a{padding:16px 24px;font-size:15px;border-bottom:1px solid #f1f1f1}
+  .nav-links .lang{margin:20px 24px 0;align-self:flex-start}
+  .backdrop{display:block;position:fixed;inset:0;background:rgba(0,0,0,.45);opacity:0;visibility:hidden;transition:.28s ease;z-index:999}
+  .backdrop.open{opacity:1;visibility:visible}
+}
+@media(prefers-reduced-motion:reduce){
+  .reveal{transition:none;opacity:1;transform:none}
+  .hero-bg,.hero .eyebrow,.hero h1,.hero p,.hero-cta{animation:none}
+  .marquee-track{animation:none}
+  html{scroll-behavior:auto}
+}
+</style>
 </head>
-
 <body>
-    <section class="top-nav" id="main">
-        <div class="logo-container">
-            <img src="images/logo.jpg" alt="Company Logo" class="logo">
-            <span class="company-name">SAAVEDRA CARPENTRY DESIGNS LTD</span>
-        </div>
 
-        <!-- Nav links (hidden on mobile) -->
-        <ul class="menu">
-            <li><a href="#" data-key="nav_home">Home</a></li>
-            <li><a href="#about" data-key="nav_about">About</a></li>
-            <li><a href="#services" data-key="nav_services">Services</a></li>
-            <li><a href="#contact" data-key="nav_contact">Contact Us</a></li>
-        </ul>
+<!-- ===== NAV ===== -->
+<header class="nav">
+  <div class="wrap">
+    <a class="brand" href="#top">
+      <img src="images/logo.jpg" alt="Saavedra Carpentry logo">
+      <span>
+        <span class="bt">SAAVEDRA</span><br>
+        <span class="bs">CARPENTRY DESIGNS</span>
+      </span>
+    </a>
+    <nav class="nav-links" id="navLinks">
+      <button class="nav-close" aria-label="Close menu" onclick="closeMenu()"><i class="fa-solid fa-xmark"></i></button>
+      <a href="#top" data-key="nav_home">Home</a>
+      <a href="#about" data-key="nav_about">About</a>
+      <a href="#services" data-key="nav_services">Services</a>
+      <a href="#work" data-key="gallery_title">Our Work</a>
+      <a href="#contact" data-key="nav_contact">Contact Us</a>
+      <span class="lang">
+        <button id="langEn" class="active" onclick="setLanguage('en')">EN</button>
+        <button id="langEs" onclick="setLanguage('es')">ES</button>
+      </span>
+    </nav>
+    <button class="menu-toggle" aria-label="Menu" onclick="openMenu()"><i class="fa-solid fa-bars"></i></button>
+  </div>
+</header>
+<div class="backdrop" id="backdrop" onclick="closeMenu()"></div>
 
-        <!-- Always-visible right side: language switcher + social icons -->
-        <div class="nav-right">
-            <!-- LANGUAGE SWITCHER -->
-            <div class="language-switch">
-                <button class="lang-btn active" id="lang-en" aria-label="Switch to English">
-                    <img src="./images/UK-flag.png" alt="English" class="flag-icon">
-                    <span>EN</span>
-                </button>
-                <span class="lang-divider">|</span>
-                <button class="lang-btn" id="lang-es" aria-label="Cambiar a Español">
-                    <img src="https://upload.wikimedia.org/wikipedia/en/9/9a/Flag_of_Spain.svg" alt="Español" class="flag-icon">
-                    <span>ES</span>
-                </button>
-            </div>
-
-            <div class="social-links">
-                <a href="https://www.facebook.com/profile.php?id=100062992792063" target="_blank" aria-label="Facebook">
-                    <i class="fab fa-facebook"></i>
-                </a>
-                <a href="https://www.instagram.com/danilo_saavedra_melgar?igsh=ZDhoazVkazk4NmQ0" target="_blank" aria-label="Instagram">
-                    <i class="fab fa-instagram"></i>
-                </a>
-            </div>
-        </div>
-    </section>
-
-    <section class="hero-section">
-        <div class="hero-content">
-            <div class="hero-image">
-                <img src="images/image1.jpg" alt="Master carpenter at work">
-            </div>
-            <div class="hero-text">
-                <h1 data-key="hero_title">Crafting Excellence, One Piece at a Time</h1>
-                <p data-key="hero_text">With more than 50 years of expertise in carpentry and construction, we transform your visions into reality. From custom furniture to complete renovations, we deliver unparalleled craftsmanship and dedication to every project.</p>
-            </div>
-        </div>
-    </section>
-
-    <div class="inspiration" id="about">
-        <div class="content-row">
-            <div class="text">
-                <h2 data-key="about_title1">SINCE 1962, CRAFTING HOMES WITH PASSION AND PRECISION</h2>
-                <p data-key="about_text1">At Saavedra, we believe your home should be as unique as you are. That's why our expert design and construction teams collaborate closely with you to create a space that perfectly reflects your vision—not just for today, but for the future.
-                    From our very first meeting to the moment you step into your completed home, we are with you every step of the way. We listen to your ideas, understand your goals, and ensure every detail meets the highest standards of quality. With Saavedra, you're not just building a house—you're creating a place to call home for years to come.</p>
-            </div>
-            <div class="image">
-                <img src="images/image2.jpg" alt="Image 2">
-            </div>
-        </div>
-        <div class="content-row row-reverse">
-            <div class="image">
-                <img src="./images/diseno-interior.jpg" alt="Image 3">
-            </div>
-            <div class="text">
-                <h2 data-key="about_title2">LET US HELP YOU BUILD YOUR DREAM HOME</h2>
-                <p data-key="about_text2">Your dream is our mission. Whether it's a new home, a remodel, or a restoration project, Saavedra's dedication to craftsmanship and excellence turns every project into a masterpiece. Together, we'll build a home that exceeds your expectations and stands as a testament to your unique style and aspirations.</p>
-            </div>
-        </div>
+<!-- ===== HERO ===== -->
+<section class="hero" id="top">
+  <div class="hero-bg"></div>
+  <div class="wrap">
+    <span class="eyebrow" style="color:#d9c8a6" data-key="hero_eyebrow">London · Since 1962</span>
+    <h1 data-key="hero_title">Crafting Excellence, One Piece at a Time</h1>
+    <p data-key="hero_text">With more than 50 years of expertise in carpentry and construction, we transform your visions into reality.</p>
+    <div class="hero-cta">
+      <a href="#contact" class="btn btn-light" data-key="cta_quote">Get a Free Quote</a>
+      <a href="#work" class="btn btn-light" data-key="cta_work">See Our Work</a>
     </div>
+  </div>
+</section>
 
-    <div class="our-services" id="services">
-        <h1 data-key="services_title">Our Services</h1>
-        <div class="services-container">
-            <div class="services-grid">
-                <div class="service-item" style="--animation-index: 1;">
-                    <div class="icon"><img src="./images/icon1.png" alt="Icon 1"></div>
-                    <div class="text">
-                        <h2 data-key="service1_title">New Home Construction</h2>
-                        <p data-key="service1_text">At Saavedra, we specialize in building custom homes that are a perfect reflection of your vision and lifestyle. From the initial design to the final touches, we ensure every step is tailored to your needs, delivering a home you'll cherish for years to come. With our commitment to quality and detail, your dream home is within reach.</p>
-                    </div>
-                </div>
-                <div class="service-item" style="--animation-index: 2;">
-                    <div class="icon"><img src="./images/icon2.png" alt="Icon 2"></div>
-                    <div class="text">
-                        <h2 data-key="service2_title">Remodeling</h2>
-                        <p data-key="service2_text">Transform your current space into something extraordinary. Whether it's modernizing your kitchen, reimagining your living room, or adding functional spaces, Saavedra takes pride in creating designs that enhance your home while maintaining its unique charm.</p>
-                    </div>
-                </div>
-                <div class="service-item" style="--animation-index: 3;">
-                    <div class="icon"><img src="./images/icon3.png" alt="Icon 3"></div>
-                    <div class="text">
-                        <h2 data-key="service3_title">Restoration</h2>
-                        <p data-key="service3_text">Preserve the beauty and character of your home with our expert restoration services. From historical properties to modern structures, Saavedra brings spaces back to life with precision and care, blending craftsmanship with innovative techniques.</p>
-                    </div>
-                </div>
-                <div class="service-item" style="--animation-index: 4;">
-                    <div class="icon"><img src="./images/icon4.png" alt="Icon 4"></div>
-                    <div class="text">
-                        <h2 data-key="service4_title">Painting</h2>
-                        <p data-key="service4_text">Elevate your home's look with our professional painting services. Whether it's interior, exterior, or specialty finishes, we use premium materials and techniques to achieve stunning, long-lasting results tailored to your preferences.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
+<!-- ===== ABOUT ===== -->
+<section class="sec about" id="about">
+  <div class="wrap about-grid">
+    <div class="reveal">
+      <span class="eyebrow" data-key="about_eyebrow">About Us</span>
+      <h2 data-key="about_title1">SINCE 1962, CRAFTING HOMES WITH PASSION AND PRECISION</h2>
+      <p data-key="about_text1">At Saavedra, we believe your home should be as unique as you are…</p>
+      <div class="stats">
+        <div><div class="n" data-count="60" data-suffix="+">60+</div><div class="l" data-key="stat_years">years of expertise</div></div>
+        <div><div class="n" data-count="500" data-suffix="+">500+</div><div class="l" data-key="stat_projects">projects delivered</div></div>
+        <div><div class="n">EN / ES</div><div class="l" data-key="stat_langs">we speak both</div></div>
+      </div>
     </div>
+    <div class="about-imgs reveal">
+      <img src="images/image2.jpg" alt="Saavedra craftsmanship" loading="lazy">
+      <img src="images/diseno-interior.jpg" alt="Finished interior by Saavedra" loading="lazy">
+    </div>
+  </div>
+</section>
 
-    <!-- ===================== PARTNERSHIP (Saavedra x Handymatt) ===================== -->
-    <section class="partnership" id="partnership">
-        <div class="pn-header pn-reveal">
-            <span class="pn-kicker" data-key="pn_kicker">In Partnership</span>
-            <h1 data-key="pn_title">Working in Partnership with Handymatt Ltd</h1>
-            <p class="pn-subtitle" data-key="pn_subtitle">We've joined forces with Handymatt Ltd to take on larger projects and deliver a more complete service — the same Saavedra standards, with more we can do for you.</p>
-            <div class="pn-lockup">
-                <span class="pn-wm">SAAVEDRA</span>
-                <span class="pn-with" data-key="pn_with">in partnership with</span>
-                <span class="pn-wm pn-wm-partner">HANDYMATT</span>
-            </div>
-        </div>
+<!-- ===== PARTNERSHIP ===== -->
+<section class="sec partner" id="partnership">
+  <div class="wrap">
+    <span class="eyebrow" data-key="pn_kicker">In Partnership</span>
+    <div class="pn-logos reveal">
+      <div class="pn-logo">
+        <img src="images/logo.jpg" alt="Saavedra Carpentry logo">
+        <span class="cap">Saavedra</span>
+      </div>
+      <div class="pn-shake"><i class="fa-solid fa-handshake"></i></div>
+      <!-- Handymatt logo placeholder — swap the .ph div for <img src="images/handymatt-logo.png"> when provided -->
+      <div class="pn-logo">
+        <div class="ph">HANDYMATT</div>
+        <span class="cap">Handymatt Ltd</span>
+      </div>
+    </div>
+    <div class="reveal">
+      <h2 data-key="pn_title">Working in Partnership with Handymatt Ltd</h2>
+      <p class="pn-intro" data-key="pn_intro">Saavedra Carpentry Designs Ltd is proud to work in partnership with Handymatt Ltd…</p>
+      <a href="#contact" class="btn btn-primary" data-key="pn_cta">Start a project with us <i class="fa-solid fa-arrow-right"></i></a>
+    </div>
+    <div class="chips stagger">
+      <span class="chip"><i class="fa-solid fa-ruler-combined"></i><span data-key="pn_s1">Bespoke carpentry</span></span>
+      <span class="chip"><i class="fa-solid fa-house-chimney"></i><span data-key="pn_s2">Complete refurbishments</span></span>
+      <span class="chip"><i class="fa-solid fa-sink"></i><span data-key="pn_s3">Kitchens and bathrooms</span></span>
+      <span class="chip"><i class="fa-solid fa-paint-roller"></i><span data-key="pn_s4">Painting and decorating</span></span>
+      <span class="chip"><i class="fa-solid fa-stairs"></i><span data-key="pn_s5">Flooring and doors</span></span>
+      <span class="chip"><i class="fa-solid fa-screwdriver-wrench"></i><span data-key="pn_s6">Property maintenance</span></span>
+      <span class="chip"><i class="fa-solid fa-clipboard-check"></i><span data-key="pn_s7">Full project management</span></span>
+    </div>
+  </div>
+</section>
 
-        <div class="pn-intro">
-            <div class="pn-intro-text pn-reveal">
-                <p data-key="pn_intro">Saavedra Carpentry Designs Ltd is proud to work in partnership with Handymatt Ltd, combining our experience, skilled workforce and resources to deliver high-quality carpentry, renovations, property maintenance and complete refurbishment projects across London and the surrounding areas.</p>
-                <a href="#contact" class="btn" data-key="pn_cta">Start a project with us</a>
-            </div>
-            <div class="pn-intro-image pn-reveal">
-                <img src="./gallery/img1.jpg" alt="Featured joint project">
-            </div>
-        </div>
+<!-- ===== SERVICES ===== -->
+<section class="sec" id="services">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="eyebrow" data-key="svc_eyebrow">What We Do</span>
+      <h2 data-key="services_title">Our Services</h2>
+    </div>
+    <div class="svc-grid stagger">
+      <div class="svc reveal"><div class="ic"><img src="images/icon1.png" alt=""></div><h3 data-key="service1_title">New Home Construction</h3><p data-key="service1_text">Custom homes built around your vision, from first design to final touch.</p></div>
+      <div class="svc reveal"><div class="ic"><img src="images/icon2.png" alt=""></div><h3 data-key="service2_title">Remodeling</h3><p data-key="service2_text">Kitchens, living spaces and extensions that transform your home.</p></div>
+      <div class="svc reveal"><div class="ic"><img src="images/icon3.png" alt=""></div><h3 data-key="service3_title">Restoration</h3><p data-key="service3_text">Bringing period and modern properties back to life with care.</p></div>
+      <div class="svc reveal"><div class="ic"><img src="images/icon4.png" alt=""></div><h3 data-key="service4_title">Painting</h3><p data-key="service4_text">Interior, exterior and specialty finishes with premium materials.</p></div>
+    </div>
+  </div>
+</section>
 
-        <div class="pn-services">
-            <h2 class="pn-reveal" data-key="pn_services_title">Everything We Offer Together</h2>
-            <p class="pn-services-sub pn-reveal" data-key="pn_services_sub">From bespoke joinery to full project handover — one team, one point of contact.</p>
-            <div class="pn-services-grid">
-                <div class="pn-service pn-reveal"><i class="fas fa-ruler-combined"></i><span data-key="pn_s1">Bespoke carpentry</span></div>
-                <div class="pn-service pn-reveal"><i class="fas fa-tools"></i><span data-key="pn_s2">Complete refurbishments</span></div>
-                <div class="pn-service pn-reveal"><i class="fas fa-sink"></i><span data-key="pn_s3">Kitchens and bathrooms</span></div>
-                <div class="pn-service pn-reveal"><i class="fas fa-paint-roller"></i><span data-key="pn_s4">Painting and decorating</span></div>
-                <div class="pn-service pn-reveal"><i class="fas fa-door-open"></i><span data-key="pn_s5">Flooring and doors</span></div>
-                <div class="pn-service pn-reveal"><i class="fas fa-house-user"></i><span data-key="pn_s6">Property maintenance</span></div>
-                <div class="pn-service pn-reveal"><i class="fas fa-clipboard-check"></i><span data-key="pn_s7">Full project management</span></div>
-            </div>
-        </div>
+<!-- ===== GALLERY ===== -->
+<section class="sec gallery" id="work">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="eyebrow" data-key="work_eyebrow">Portfolio</span>
+      <h2 data-key="gallery_title">Our Work</h2>
+      <p data-key="gallery_subtitle">Take a look at some of our recent remodeling projects.</p>
+    </div>
+    <div class="gal-grid stagger">
+      <a href="gallery.html"><img src="gallery/img4.jpg" alt="Saavedra project" loading="lazy"></a>
+      <a href="gallery.html"><img src="gallery/img5.jpg" alt="Saavedra project" loading="lazy"></a>
+      <a href="gallery.html"><img src="gallery/img2.jpg" alt="Saavedra project" loading="lazy"></a>
+      <a href="gallery.html"><img src="gallery/img1.jpg" alt="Saavedra project" loading="lazy"></a>
+      <a href="gallery.html"><img src="gallery/img3.jpg" alt="Saavedra project" loading="lazy"></a>
+      <a href="gallery.html"><img src="gallery/img8.jpg" alt="Saavedra project" loading="lazy"></a>
+      <a href="gallery.html"><img src="gallery/img7.jpg" alt="Saavedra project" loading="lazy"></a>
+      <a href="gallery.html"><img src="gallery/img9.jpg" alt="Saavedra project" loading="lazy"></a>
+    </div>
+    <div style="text-align:center;margin-top:26px">
+      <a href="gallery.html" class="btn" data-key="see_more">See More</a>
+    </div>
+  </div>
+</section>
 
-        <div class="pn-gallery">
-            <h2 class="pn-reveal" data-key="pn_gallery_title">Projects Delivered Together</h2>
-            <p class="pn-gallery-sub pn-reveal" data-key="pn_gallery_sub">A selection of work completed in collaboration.</p>
-            <div class="gallery-grid pn-reveal">
-                <div class="gallery-item"><img src="./gallery/img10.jpg" alt="Joint project 1"></div>
-                <div class="gallery-item"><img src="./gallery/img11.jpg" alt="Joint project 2"></div>
-                <div class="gallery-item"><img src="./gallery/img12.jpg" alt="Joint project 3"></div>
-                <div class="gallery-item"><img src="./gallery/img13.jpg" alt="Joint project 4"></div>
-                <div class="gallery-item"><img src="./gallery/img14.jpg" alt="Joint project 5"></div>
-                <div class="gallery-item"><img src="./gallery/img15.jpg" alt="Joint project 6"></div>
-            </div>
-            <div class="see-more pn-reveal">
-                <a href="gallery.html" class="btn" data-key="pn_see_more">See More Collaborations</a>
-            </div>
-        </div>
-    </section>
+<!-- ===== BRANDS / PRODUCTS ===== -->
+<section class="sec brands" id="brands">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="eyebrow" data-key="brands_kicker">Materials</span>
+      <h2 data-key="brands_title">What Products Do We Use?</h2>
+      <p data-key="brands_text">We work with trusted, high-quality brands on every project.</p>
+    </div>
+    <div class="brand-band reveal">
+      <div class="brand-grid">
+        <div class="brand-cell"><img src="images/product1.png" alt="Brand" loading="lazy"></div>
+        <div class="brand-cell"><img src="images/product2.png" alt="Brand" loading="lazy"></div>
+        <div class="brand-cell"><img src="images/product3.png" alt="Brand" loading="lazy"></div>
+        <div class="brand-cell"><img src="images/product4.png" alt="Brand" loading="lazy"></div>
+        <div class="brand-cell"><img src="images/product5.png" alt="Brand" loading="lazy"></div>
+        <div class="brand-cell"><img src="images/product6.png" alt="Brand" loading="lazy"></div>
+        <div class="brand-cell"><img src="images/product7.png" alt="Brand" loading="lazy"></div>
+      </div>
+    </div>
+  </div>
+</section>
 
-    <section id="gallery" class="gallery-section">
-        <div class="container">
-            <h2 class="gallery-title" data-key="gallery_title">Our Work</h2>
-            <p class="gallery-subtitle" data-key="gallery_subtitle">Take a look at some of our recent remodeling projects.</p>
-            <div class="gallery-grid">
-                <div class="gallery-item"><img src="./gallery/img4.jpg" alt="Project 1"></div>
-                <div class="gallery-item"><img src="./gallery/img5.jpg" alt="Project 2"></div>
-                <div class="gallery-item"><img src="./gallery/img2.jpg" alt="Project 3"></div>
-                <div class="gallery-item"><img src="./gallery/img1.jpg" alt="Project 4"></div>
-                <div class="gallery-item"><img src="./gallery/img3.jpg" alt="Project 5"></div>
-                <div class="gallery-item"><img src="./gallery/img8.jpg" alt="Project 6"></div>
-                <div class="gallery-item"><img src="./gallery/img7.jpg" alt="Project 7"></div>
-                <div class="gallery-item"><img src="./gallery/img6.jpg" alt="Project 8"></div>
-                <div class="gallery-item"><img src="./gallery/img9.jpg" alt="Project 9"></div>
-            </div>
-            <div class="see-more">
-                <a href="gallery.html" class="btn" data-key="see_more">See More</a>
-            </div>
-        </div>
-    </section>
+<!-- ===== REVIEWS ===== -->
+<section class="sec" id="reviews">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="eyebrow" data-key="rev_eyebrow">Testimonials</span>
+      <h2 data-key="reviews_title">What Our Clients Say</h2>
+      <p data-key="reviews_subtitle">Real feedback from satisfied clients who trust our quality and professionalism.</p>
+    </div>
+    <div class="rev-grid" id="reviewsContainer"><!-- reviews load from reviews.json --></div>
+  </div>
+</section>
 
-    <!-- ===================== OUR CLIENTS ===================== -->
-    <section class="our-clients">
-        <div class="clients-header">
-            <h2 class="clients-title" data-key="clients_title">Our Clients</h2>
-            <p class="clients-subtitle" data-key="clients_subtitle">From family homes to international developments, these are the brands and organisations that trust Saavedra.</p>
-        </div>
-        <div class="marquee-wrapper">
-            <div class="marquee-fade-left"></div>
-            <div class="marquee-fade-right"></div>
-            <div class="marquee-track">
-                <div class="logo-card"><span class="logo-text">ALBERTON<small>GROUP</small></span></div>
-                <div class="logo-card"><span class="logo-text">MERCER<small>DEVELOPMENTS</small></span></div>
-                <div class="logo-card"><span class="logo-text">NOVA<small>INTERIORS</small></span></div>
-                <div class="logo-card"><span class="logo-text">CROWN<small>PROPERTIES</small></span></div>
-                <div class="logo-card"><span class="logo-text">HELIX<small>CONSTRUCTION</small></span></div>
-                <div class="logo-card"><span class="logo-text">SOLARIS<small>HOMES</small></span></div>
-                <div class="logo-card"><span class="logo-text">VANTAGE<small>ESTATES</small></span></div>
-                <div class="logo-card"><span class="logo-text">ALBERTON<small>GROUP</small></span></div>
-                <div class="logo-card"><span class="logo-text">MERCER<small>DEVELOPMENTS</small></span></div>
-                <div class="logo-card"><span class="logo-text">NOVA<small>INTERIORS</small></span></div>
-                <div class="logo-card"><span class="logo-text">CROWN<small>PROPERTIES</small></span></div>
-                <div class="logo-card"><span class="logo-text">HELIX<small>CONSTRUCTION</small></span></div>
-                <div class="logo-card"><span class="logo-text">SOLARIS<small>HOMES</small></span></div>
-                <div class="logo-card"><span class="logo-text">VANTAGE<small>ESTATES</small></span></div>
-            </div>
-        </div>
-    </section>
+<!-- ===== CLIENTS (marquee) ===== -->
+<section class="sec clients" id="clients">
+  <div class="wrap">
+    <div class="sec-head reveal" style="margin-bottom:8px">
+      <span class="eyebrow" data-key="clients_kicker">Trusted By</span>
+      <h2 data-key="clients_title">Our Clients</h2>
+    </div>
+  </div>
+  <div class="marquee">
+    <div class="marquee-track" id="clientTrack"></div>
+  </div>
+</section>
 
-    <!-- ===================== Client Reviews ===================== -->
-    <section id="client-reviews">
-        <div class="reviews-wrapper">
-            <h2 class="reviews-title" data-key="reviews_title">What Our Clients Say</h2>
-            <p class="reviews-subtitle" data-key="reviews_subtitle">
-                Real feedback from satisfied clients who trust our quality and professionalism.
-            </p>
-            <div class="reviews-container" id="reviewsContainer">
-                <!-- Reviews will load dynamically -->
-            </div>
-        </div>
-    </section>
+<!-- ===== COUNTRIES ===== -->
+<section class="sec countries" id="countries">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="eyebrow" data-key="countries_kicker">Our Reach</span>
+      <h2 data-key="countries_title">Countries We've Worked In</h2>
+      <p data-key="countries_text">Our expertise has reached across borders, delivering exceptional service internationally.</p>
+    </div>
+    <div id="map" class="reveal"></div>
+  </div>
+</section>
 
-    <section class="our-products">
-        <h1 data-key="products_title">What Types of Products Do We Use?</h1>
-        <p data-key="products_subtitle">We use high-quality products for our services.</p>
-        <div class="products-bar">
-            <div class="product-item"><img src="./images/product1.png" alt="Product 1"></div>
-            <div class="product-item"><img src="./images/product7.png" alt="Product 1"></div>
-            <div class="product-item"><img src="./images/product2.png" alt="Product 2"></div>
-            <div class="product-item"><img src="./images/product3.png" alt="Product 3"></div>
-            <div class="product-item"><img src="./images/product4.png" alt="Product 4"></div>
-            <div class="product-item"><img src="./images/product5.png" alt="Product 4"></div>
-            <div class="product-item"><img src="./images/product6.png" alt="Product 4"></div>
+<!-- ===== CONTACT ===== -->
+<section class="sec contact" id="contact">
+  <div class="wrap">
+    <div class="sec-head reveal" style="max-width:640px">
+      <span class="eyebrow" data-key="contact_eyebrow">Get In Touch</span>
+      <h2 data-key="contact_title">Contact Us</h2>
+      <p data-key="consultation_text">We offer a free consultation to understand your needs and help you get started.</p>
+    </div>
+    <div class="contact-grid">
+      <div class="reveal">
+        <div class="cinfo-list">
+          <div class="row"><i class="fa-solid fa-envelope"></i><div><div class="k" data-key="c_email">Email</div><div class="v">saavedranilomelgar@gmail.com</div></div></div>
+          <div class="row"><i class="fa-solid fa-phone"></i><div><div class="k" data-key="c_phone">Phone</div><div class="v">+44 7930 695089</div></div></div>
+          <div class="row"><i class="fa-regular fa-clock"></i><div><div class="k" data-key="c_hours">Office Hours</div><div class="v" data-key="hours_value">Mon – Fri, 9 AM – 6 PM</div></div></div>
         </div>
-    </section>
-
-    <section class="countries-worked">
-        <h1 data-key="countries_title">Countries We've Worked In</h1>
-        <h2 data-key="countries_subtitle">We are an international company</h2>
-        <p data-key="countries_text">Our expertise has reached across borders, delivering exceptional service worldwide.</p>
-        <div id="map" style="width: 100%; height: 400px;"></div>
-    </section>
-
-    <section class="contact-us" id="contact">
-        <div class="contact-container">
-            <h1 data-key="contact_title">Contact Us</h1>
-            <p data-key="contact_subtitle">We're here to help! Reach out for a free consultation today.</p>
-            <div class="contact-info">
-                <div class="contact-detail">
-                    <h3 data-key="consultation_title">Free Consultation</h3>
-                    <p data-key="consultation_text">We offer a free consultation to understand your needs and help you get started with our services.</p>
-                </div>
-                <div class="contact-detail">
-                    <h3 data-key="languages_title">We Speak English and Spanish</h3>
-                    <div class="languages">
-                        <img src="./images/UK-flag.png" class="flag">
-                        <img src="https://upload.wikimedia.org/wikipedia/commons/9/9a/Flag_of_Spain.svg" alt="Spanish" class="flag">
-                    </div>
-                    <p data-key="languages_text">Our team is fluent in both English and Spanish, so feel free to contact us in whichever language you prefer!</p>
-                </div>
-                <div class="contact-detail">
-                    <h3 data-key="getintouch_title">Get In Touch</h3>
-                    <ul>
-                        <li><strong>Email:</strong> saavedranilomelgar@gmail.com</li>
-                        <li><strong>Phone:</strong> +44 7930 695089</li>
-                        <li><strong data-key="hours_label">Office Hours:</strong> <span data-key="hours_value">Mon - Fri, 9 AM - 6 PM</span></li>
-                    </ul>
-                </div>
-            </div>
-            <div class="social-media">
-                <h3 data-key="follow_us">Follow Us</h3>
-                <ul>
-                    <li><a href="https://www.facebook.com/profile.php?id=100062992792063" target="_blank" class="social-icon facebook"><i class="fab fa-facebook-f"></i></a></li>
-                    <li><a href="https://www.instagram.com/danilo_saavedraltd?igsh=ZDRjb29yZG5pMGFl&utm_source=qr" target="_blank" class="social-icon instagram"><i class="fab fa-instagram"></i></a></li>
-                </ul>
-            </div>
+        <div class="csoc">
+          <a href="https://www.facebook.com/profile.php?id=100062992792063" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+          <a href="https://www.instagram.com/danilo_saavedraltd" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
         </div>
-        <div class="footer">
-            <p>&copy; 2026 Saavedra Carpentry Designs LTD. <span data-key="footer_rights">All rights reserved.</span></p>
+      </div>
+      <form class="cform reveal" id="contactForm" novalidate>
+        <div class="fld">
+          <label for="cf-name" data-key="form_name">Name</label>
+          <input type="text" id="cf-name" name="name" required placeholder="Jane Smith">
         </div>
-        <a href="#main" class="totop">↑</a>
-    </section>
+        <div class="fld">
+          <label for="cf-email" data-key="form_email">Email</label>
+          <input type="email" id="cf-email" name="email" required placeholder="you@email.com">
+        </div>
+        <div class="fld">
+          <label for="cf-phone" data-key="form_phone">Phone (optional)</label>
+          <input type="tel" id="cf-phone" name="phone" placeholder="+44 …">
+        </div>
+        <div class="fld">
+          <label for="cf-msg" data-key="form_msg">Message</label>
+          <textarea id="cf-msg" name="message" required placeholder="Tell us about your project…"></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary" data-key="form_send">Send Message <i class="fa-solid fa-paper-plane"></i></button>
+        <div class="note" data-key="form_note">Your message opens in your email app, ready to send.</div>
+      </form>
+    </div>
+  </div>
+</section>
 
-    <script src="./script.js"></script>
+<!-- ===== FOOTER ===== -->
+<footer class="footer">
+  <div class="wrap">
+    <div class="fb">SAAVEDRA CARPENTRY DESIGNS</div>
+    <div class="soc">
+      <a href="https://www.facebook.com/profile.php?id=100062992792063" aria-label="Facebook"><i class="fa-brands fa-facebook"></i></a>
+      <a href="https://www.instagram.com/danilo_saavedraltd" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+      <span>© 2026 Saavedra Carpentry Designs Ltd · <span data-key="footer_rights">All rights reserved.</span></span>
+    </div>
+  </div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
+<script>
+/* ---- translations (EN/ES) ---- */
+const translations = {
+  en:{
+    nav_home:"Home",nav_about:"About",nav_services:"Services",nav_contact:"Contact Us",
+    hero_eyebrow:"London · Since 1962",
+    hero_title:"Crafting Excellence, One Piece at a Time",
+    hero_text:"With more than 50 years of expertise in carpentry and construction, we transform your visions into reality. From custom furniture to complete renovations, we deliver unparalleled craftsmanship on every project.",
+    cta_quote:"Get a Free Quote",cta_work:"See Our Work",
+    about_eyebrow:"About Us",
+    about_title1:"SINCE 1962, CRAFTING HOMES WITH PASSION AND PRECISION",
+    about_text1:"At Saavedra, we believe your home should be as unique as you are. Our expert design and construction teams work closely with you to create a space that reflects your vision — not just for today, but for the future. From the first meeting to the finished home, we're with you every step of the way.",
+    stat_years:"years of expertise",stat_projects:"projects delivered",stat_langs:"we speak both",
+    pn_kicker:"In Partnership",
+    pn_title:"Working in Partnership with Handymatt Ltd",
+    pn_intro:"Saavedra Carpentry Designs Ltd is proud to work in partnership with Handymatt Ltd, combining our experience, skilled workforce and resources to deliver high-quality carpentry, renovations, property maintenance and complete refurbishment projects across London and the surrounding areas.",
+    pn_cta:"Start a project with us",
+    pn_s1:"Bespoke carpentry",pn_s2:"Complete refurbishments",pn_s3:"Kitchens and bathrooms",pn_s4:"Painting and decorating",pn_s5:"Flooring and doors",pn_s6:"Property maintenance",pn_s7:"Full project management",
+    svc_eyebrow:"What We Do",services_title:"Our Services",
+    service1_title:"New Home Construction",service1_text:"Custom homes built around your vision, from first design to final touch.",
+    service2_title:"Remodeling",service2_text:"Kitchens, living spaces and extensions that transform your home.",
+    service3_title:"Restoration",service3_text:"Bringing period and modern properties back to life with care.",
+    service4_title:"Painting",service4_text:"Interior, exterior and specialty finishes with premium materials.",
+    work_eyebrow:"Portfolio",gallery_title:"Our Work",gallery_subtitle:"Take a look at some of our recent remodeling projects.",see_more:"See More",
+    brands_kicker:"Materials",brands_title:"What Products Do We Use?",brands_text:"We work with trusted, high-quality brands on every project.",
+    rev_eyebrow:"Testimonials",reviews_title:"What Our Clients Say",reviews_subtitle:"Real feedback from satisfied clients who trust our quality and professionalism.",
+    clients_kicker:"Trusted By",clients_title:"Our Clients",
+    countries_kicker:"Our Reach",countries_title:"Countries We've Worked In",countries_text:"Our expertise has reached across borders, delivering exceptional service internationally.",
+    contact_eyebrow:"Get In Touch",contact_title:"Contact Us",
+    consultation_text:"We offer a free consultation to understand your needs and help you get started — in English or Spanish, whichever you prefer.",
+    c_email:"Email",c_phone:"Phone",c_hours:"Office Hours",hours_value:"Mon – Fri, 9 AM – 6 PM",
+    form_name:"Name",form_email:"Email",form_phone:"Phone (optional)",form_msg:"Message",form_send:"Send Message",
+    form_note:"Your message opens in your email app, ready to send.",
+    footer_rights:"All rights reserved.",
+    preview_note:"PREVIEW · new design proposal — this is not the live site"
+  },
+  es:{
+    nav_home:"Inicio",nav_about:"Nosotros",nav_services:"Servicios",nav_contact:"Contacto",
+    hero_eyebrow:"Londres · Desde 1962",
+    hero_title:"Creando Excelencia, Pieza por Pieza",
+    hero_text:"Con más de 50 años de experiencia en carpintería y construcción, convertimos tu visión en realidad. Desde muebles a medida hasta renovaciones completas, ofrecemos una artesanía incomparable en cada proyecto.",
+    cta_quote:"Pide Presupuesto Gratis",cta_work:"Ver Nuestro Trabajo",
+    about_eyebrow:"Sobre Nosotros",
+    about_title1:"DESDE 1962, CONSTRUYENDO HOGARES CON PASIÓN Y PRECISIÓN",
+    about_text1:"En Saavedra creemos que tu hogar debe ser tan único como tú. Nuestros equipos de diseño y construcción trabajan contigo para crear un espacio que refleje tu visión, no solo para hoy sino para el futuro. Desde la primera reunión hasta el hogar terminado, estamos contigo en cada paso.",
+    stat_years:"años de experiencia",stat_projects:"proyectos entregados",stat_langs:"hablamos ambos",
+    pn_kicker:"En Colaboración",
+    pn_title:"Trabajando en Colaboración con Handymatt Ltd",
+    pn_intro:"Saavedra Carpentry Designs Ltd se enorgullece de trabajar en colaboración con Handymatt Ltd, combinando nuestra experiencia, equipo cualificado y recursos para ofrecer carpintería de alta calidad, reformas, mantenimiento de propiedades y proyectos de reforma integral en Londres y alrededores.",
+    pn_cta:"Empieza tu proyecto con nosotros",
+    pn_s1:"Carpintería a medida",pn_s2:"Reformas completas",pn_s3:"Cocinas y baños",pn_s4:"Pintura y decoración",pn_s5:"Suelos y puertas",pn_s6:"Mantenimiento de propiedades",pn_s7:"Gestión integral de proyectos",
+    svc_eyebrow:"Lo Que Hacemos",services_title:"Nuestros Servicios",
+    service1_title:"Construcción de Vivienda Nueva",service1_text:"Casas a medida construidas en torno a tu visión, del primer diseño al último detalle.",
+    service2_title:"Reformas",service2_text:"Cocinas, salones y ampliaciones que transforman tu hogar.",
+    service3_title:"Restauración",service3_text:"Devolvemos la vida a propiedades históricas y modernas con cuidado.",
+    service4_title:"Pintura",service4_text:"Interior, exterior y acabados especiales con materiales premium.",
+    work_eyebrow:"Portafolio",gallery_title:"Nuestro Trabajo",gallery_subtitle:"Echa un vistazo a algunos de nuestros proyectos de reforma más recientes.",see_more:"Ver Más",
+    brands_kicker:"Materiales",brands_title:"¿Qué Productos Usamos?",brands_text:"Trabajamos con marcas de confianza y alta calidad en cada proyecto.",
+    rev_eyebrow:"Testimonios",reviews_title:"Lo Que Dicen Nuestros Clientes",reviews_subtitle:"Opiniones reales de clientes satisfechos que confían en nuestra calidad y profesionalidad.",
+    clients_kicker:"Confían En Nosotros",clients_title:"Nuestros Clientes",
+    countries_kicker:"Nuestro Alcance",countries_title:"Países Donde Hemos Trabajado",countries_text:"Nuestra experiencia ha cruzado fronteras, ofreciendo un servicio excepcional a nivel internacional.",
+    contact_eyebrow:"Contáctanos",contact_title:"Contáctanos",
+    consultation_text:"Ofrecemos una consulta gratuita para entender tus necesidades y ayudarte a empezar — en inglés o español, el que prefieras.",
+    c_email:"Correo",c_phone:"Teléfono",c_hours:"Horario",hours_value:"Lun – Vie, 9:00 – 18:00",
+    form_name:"Nombre",form_email:"Correo",form_phone:"Teléfono (opcional)",form_msg:"Mensaje",form_send:"Enviar Mensaje",
+    form_note:"Tu mensaje se abrirá en tu aplicación de correo, listo para enviar.",
+    footer_rights:"Todos los derechos reservados.",
+    preview_note:"PREVIEW · propuesta de nuevo diseño — este no es el sitio en vivo"
+  }
+};
+
+/* ---- language switcher ---- */
+let currentLang = localStorage.getItem("saavedra_lang") || "en";
+function setLanguage(lang){
+  currentLang = lang;
+  document.querySelectorAll("[data-key]").forEach(el=>{
+    const k = el.getAttribute("data-key");
+    if(translations[lang] && translations[lang][k] !== undefined) el.textContent = translations[lang][k];
+  });
+  document.documentElement.lang = lang;
+  document.getElementById("langEn").classList.toggle("active", lang==="en");
+  document.getElementById("langEs").classList.toggle("active", lang==="es");
+  localStorage.setItem("saavedra_lang", lang);
+}
+
+/* ---- mobile menu ---- */
+function openMenu(){ document.getElementById("navLinks").classList.add("open"); document.getElementById("backdrop").classList.add("open"); }
+function closeMenu(){ document.getElementById("navLinks").classList.remove("open"); document.getElementById("backdrop").classList.remove("open"); }
+document.querySelectorAll("#navLinks a").forEach(a=>a.addEventListener("click", closeMenu));
+
+/* ---- fade-in on scroll ---- */
+const io = new IntersectionObserver((entries)=>{
+  entries.forEach(en=>{ if(en.isIntersecting){ en.target.classList.add("visible"); io.unobserve(en.target); } });
+},{threshold:.15});
+document.querySelectorAll(".stagger").forEach(g=>{
+  [...g.children].forEach((ch,i)=>{ ch.classList.add("reveal"); ch.style.transitionDelay=(i*85)+"ms"; });
+});
+document.querySelectorAll(".reveal").forEach(el=>io.observe(el));
+
+/* ---- reviews from reviews.json ---- */
+fetch("reviews.json").then(r=>r.json()).then(data=>{
+  const c = document.getElementById("reviewsContainer");
+  if(!c) return;
+  data.filter(r=>r.rating>=4).forEach((r,i)=>{
+    const stars = "★".repeat(r.rating);
+    const card = document.createElement("div");
+    card.className = "rev reveal";
+    card.style.transitionDelay=(i*85)+"ms";
+    card.innerHTML = `<div class="stars">${stars}</div><div class="txt">"${r.text}"</div><div class="who">${r.name}</div><div class="date">${r.date}</div>`;
+    c.appendChild(card);
+    io.observe(card);
+  });
+}).catch(e=>console.error("reviews:",e));
+
+/* ---- clients marquee (duplicated for seamless loop) ---- */
+const clientNames = ["ALBERTON GROUP","MERCER DEVELOPMENTS","NOVA INTERIORS","CROWN PROPERTIES","HELIX CONSTRUCTION","SOLARIS HOMES","VANTAGE ESTATES"];
+const track = document.getElementById("clientTrack");
+if(track){
+  const build = ()=>clientNames.map(n=>`<div class="client-pill">${n}</div>`).join("");
+  track.innerHTML = build() + build();
+}
+
+/* ---- count-up for stats ---- */
+function countUp(el){
+  const target=+el.dataset.count, suf=el.dataset.suffix||"", dur=1400; let start=null;
+  function step(ts){ if(!start)start=ts; const p=Math.min((ts-start)/dur,1); const e=1-Math.pow(1-p,3);
+    el.textContent=Math.round(e*target)+suf; if(p<1)requestAnimationFrame(step); }
+  requestAnimationFrame(step);
+}
+const statIO=new IntersectionObserver((es)=>{es.forEach(e=>{ if(e.isIntersecting){ countUp(e.target); statIO.unobserve(e.target); } })},{threshold:.6});
+document.querySelectorAll("[data-count]").forEach(el=>statIO.observe(el));
+
+/* ---- countries map (Leaflet) ---- */
+(function initMap(){
+  if(typeof L === "undefined") return;
+  const map = L.map("map",{scrollWheelZoom:false,attributionControl:true}).setView([25,-20],2);
+  L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",{maxZoom:6,minZoom:1,attribution:"© OpenStreetMap"}).addTo(map);
+  const places=[["United Kingdom",51.5074,-0.1278],["Spain",40.4168,-3.7038],["France",48.8566,2.3522],["Portugal",38.7223,-9.1393],["Bolivia",-16.5000,-68.1500],["Peru",-12.0464,-77.0428],["Chile",-33.4489,-70.6693]];
+  places.forEach(p=>L.marker([p[1],p[2]]).addTo(map).bindPopup(p[0]));
+})();
+
+/* ---- contact form -> opens email app prefilled (works without a backend) ---- */
+const form = document.getElementById("contactForm");
+if(form){
+  form.addEventListener("submit",(e)=>{
+    e.preventDefault();
+    const name=document.getElementById("cf-name").value.trim();
+    const email=document.getElementById("cf-email").value.trim();
+    const phone=document.getElementById("cf-phone").value.trim();
+    const msg=document.getElementById("cf-msg").value.trim();
+    if(!name||!email||!msg){ alert(currentLang==="es"?"Por favor completa nombre, correo y mensaje.":"Please fill in name, email and message."); return; }
+    const subject=encodeURIComponent("New enquiry from "+name);
+    const body=encodeURIComponent("Name: "+name+"\nEmail: "+email+"\nPhone: "+phone+"\n\n"+msg);
+    window.location.href="mailto:saavedranilomelgar@gmail.com?subject="+subject+"&body="+body;
+  });
+}
+
+/* ---- init ---- */
+setLanguage(currentLang);
+</script>
 </body>
 </html>
